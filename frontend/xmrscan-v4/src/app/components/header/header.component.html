@@ -1,5 +1,17 @@
-<header id="header" class="transition">
-    <div id="headerContainer" class="transition">
+<div class="header-top container">
+  <a class="header-top__logo-wrapper" href="/">
+    <img src="/assets/icons/icon-monero-logo.svg" />
+    <img src="/assets/icons/icon-monero-title.svg" />
+    <span class="header-top__logo-text">Explorer</span>
+  </a>
+  <div class="header-top__links">
+    <a href="https://btcmempool.org/"><img src="/assets/icons/icon-mempool.svg" /></a>
+    <a href="https://btcscan.org/"><img src="/assets/icons/icon-btc.svg" /></a>
+    <a href="https://ethscan.org/"><img src="/assets/icons/icon-eth.svg" /></a>
+  </div>
+</div>
+<header id="header">
+    <div id="headerContainer">
         <div class="search-wrapper">
             <input type="text" id="headerSearchBar" #headerSearchBar class="font100 transition" placeholder="Search for a Block or Transaction" [(ngModel)]="searchInput" (keydown)="search($event)">
             <span class="material-symbols-rounded search-icon transitionFast" id="clearSearch" [class.hidden]="!searchInput || searchInput.trim() === ''" (click)="clearSearch()">backspace</span>

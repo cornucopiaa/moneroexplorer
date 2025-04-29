@@ -11,3 +11,9 @@
         overflow-x: hidden;
     }
 }
+
+.root-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

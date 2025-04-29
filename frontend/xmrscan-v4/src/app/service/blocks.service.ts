@@ -5,6 +5,7 @@ import { Blocks } from '../data/blocks';
 import { Block } from '../data/block';
 import { Mempool } from '../data/mempool';
 
+// for local replace to '/site-api'
 const baseUrl = 'https://xmrscan-docker-4ogsjv4w2q-ez.a.run.app'
 
 @Injectable({

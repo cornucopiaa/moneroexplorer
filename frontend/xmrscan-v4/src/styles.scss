@@ -39,41 +39,42 @@ body {
 }
 
 [data-theme="light"] {
-    --siteBackground: #f1ebde;
-    --searchBarBackground: #fef9f0;
-    --searchBarText: #AC9D8A;
-    --searchButtonBackground: #FC993A;
-    --searchButtonBackgroundHover: #ffaa5b;
-    --searchButtonText: #FFE7D0;
-    --textHeading: #4C4638;
-    --text: #676153;
-    --textLight: #A69E91;
-    --textAge: #B7B0A1;
-    --buttonViewAllBackground: #d8d1c5;
-    --buttonViewAllBackgroundHover: #c3beb1;
-    --buttonViewAllText: #4C4639;
-    --cardLightBackground: #fff9ed;
-    --cardDarkBackground: #fff8e9;
-    --headerGradient: linear-gradient(0deg, rgba(241, 235, 222, 0) 0%, rgba(241, 235, 222, 1) 100%);
+    --logoColor: #296699;
+    --siteBackground: #fff;
+    --searchBarBackground: #F0F0F0;
+    --searchBarText: #8A93AC;
+    --searchButtonBackground: #0456B8;
+    --searchButtonBackgroundHover: #0456B8;
+    --searchButtonText: #D4E8FF;
+    --textHeading: #296699;
+    --text: #296699;
+    --textLight: #3FA7FF;
+    --textAge: #B0B0B0;
+    --buttonViewAllBackground: #E8F3FF;
+    --buttonViewAllBackgroundHover: #E8F3FF;
+    --buttonViewAllText: #3FA7FF;
+    --cardLightBackground: #F0F0F0;
+    --cardDarkBackground: #F0F0F0;
+    --headerGradient: linear-gradient(0deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 100%);
     --pathInactive: #9A9487;
-    --pathActive: #E38A34;
+    --pathActive: #3FA7FF;
     --newButtonBackground: #5FABF0;
     --newButtonText: #DCEEFF;
-    --nextButtonBackground: #C1BBAF;
-    --prevButtonBackground: #D8D2C6;
-    --nextButtonText: #4C4639;
-    --prevButtonText: #928C80;
-    --confirmingBackground: #ffe6a7;
-    --confirmingText: #d38d00;
-    --confirmingTextLight: #E7AE39;
-    --confirmingButtonBackground: #F7BE49;
-    --confirmingButtonText: #A46E01;
+    --nextButtonBackground: #E8F3FF;
+    --prevButtonBackground: #82A8D2;
+    --nextButtonText: #296699;
+    --prevButtonText: #FFFFFF;
+    --confirmingBackground: #F0F0F0;
+    --confirmingText: #296699;
+    --confirmingTextLight: #3FA7FF;
+    --confirmingButtonBackground: #82A8D2;
+    --confirmingButtonText: #FFFFFF;
     --confirmedBackground: #C2E7A4;
     --confirmedText: #4A9924;
     --confirmedTextLight: #7AB757;
     --confirmedButtonBackground: #78C752;
     --confirmedButtonText: #305904;
-    --proveButtonInactive: #D8D2C6;
+    --proveButtonInactive: #E8F3FF;
     --proveButtonActive: #4C4639;
     --proveButtonActiveText: #eee7da;
     --proveInputFieldBackground: #f7f0e4;
@@ -83,12 +84,12 @@ body {
     --proveBorder: #7FC44F;
     --proveText: #4b782b;
     --proveLightText: #2b4e129b;
-    --themeSwitchButtonBackground: #f2ebdb;
+    --themeSwitchButtonBackground: #F0F0F0;
     --noProveResultsBackground: #ff002221;
     --noProveResultsText: #fe2b2b;
     --paginatorDisabled: #67615354;
     --boxShadow: rgba(0, 0, 0, 0.02);
-    --searchBarFocused: #fffcf5;
+    --searchBarFocused: #F0F0F0;
 
     --font100: 'OpenRundeRegular';
     --font200: 'OpenRundeMedium';
@@ -99,41 +100,42 @@ body {
 }
 
 [data-theme="dark"] {
-    --siteBackground: #101010;
-    --searchBarBackground: #171717;
-    --searchBarText: #5D5D5D;
-    --searchButtonBackground: #251D15;
-    --searchButtonBackgroundHover: #413325;
-    --searchButtonText: #DE832C;
-    --textHeading: #DBDBDB;
-    --text: #DBDBDB;
-    --textLight: #8C8C8C;
-    --textAge: #767676;
-    --buttonViewAllBackground: #2f2f2f;
-    --buttonViewAllBackgroundHover: #757575;
-    --buttonViewAllText: #DBDBDB;
-    --cardLightBackground: #1A1A1A;
-    --cardDarkBackground: #161616;
-    --headerGradient: linear-gradient(0deg, rgba(16, 16, 16, 0) 0%, rgba(16, 16, 16, 1) 100%);
-    --pathInactive: #6B6B6B;
-    --pathActive: #E28B34;
+    --logoColor: #ffffff;
+    --siteBackground: #171C3B;
+    --searchBarBackground: #1E2B52;
+    --searchBarText: #ADCDE8;
+    --searchButtonBackground: #2F427C;
+    --searchButtonBackgroundHover: #2F427C;
+    --searchButtonText: #A3BFFF;
+    --textHeading: #FFFFFF;
+    --text: #FFFFFF;
+    --textLight: #ADCDE8;
+    --textAge: #A8ADB4;
+    --buttonViewAllBackground: #2F427C;
+    --buttonViewAllBackgroundHover: #2F427C;
+    --buttonViewAllText: #A3BFFF;
+    --cardLightBackground: #1E2B52;
+    --cardDarkBackground: #1E2B52;
+    --headerGradient: linear-gradient(0deg, rgba(23, 28, 59, 0) 0%, rgba(23, 28, 59, 1) 100%);
+    --pathInactive: #A8ADB4;
+    --pathActive: #A3BFFF;
     --newButtonBackground: #192C3D;
     --newButtonText: #3D9DF6;
-    --nextButtonBackground: #313131;
-    --prevButtonBackground: #1C1C1C;
+    --nextButtonBackground: #2F427C;
+    --prevButtonBackground: #1E2B52;
     --nextButtonText: #FFFFFF;
-    --prevButtonText: #A2A2A2;
-    --confirmingBackground: #272115;
-    --confirmingText: #F8BD45;
-    --confirmingTextLight: #8E6F2E;
-    --confirmingButtonBackground: #F8BD45;
-    --confirmingButtonText: #3E321A;
+    --prevButtonText: #A3BFFF;
+    --confirmingBackground: #1E2B52;
+    --confirmingText: #ADCDE8;
+    --confirmingTextLight: #FFFFFF;
+    --confirmingButtonBackground: #2F427C;
+    --confirmingButtonText: #FFFFFF;
     --confirmedBackground: #1B2316;
     --confirmedText: #80D158;
     --confirmedTextLight: #4D7939;
     --confirmedButtonBackground: #7FD159;
     --confirmedButtonText: #17331D;
-    --proveButtonInactive: #1C1C1C;
+    --proveButtonInactive: #1E2B52;
     --proveButtonActive: #C1BBAF;
     --proveButtonActiveText: #1A1A1A;
     --proveInputFieldBackground: #1A1A1A;
@@ -148,7 +150,7 @@ body {
     --noProveResultsText: #fe1f1f;
     --paginatorDisabled: #dbdbdb46;
     --boxShadow: rgba(0, 0, 0, 0);
-    --searchBarFocused: #1A1A1A;
+    --searchBarFocused: #1E2B52;
 
     --font100: 'OpenRundeRegular';
     --font200: 'OpenRundeMedium';
@@ -211,7 +213,7 @@ body {
   }
 
 #frame {
-    padding-top: 150px;
+    padding-top: 180px;
     width: calc(1045px*var(--factor));
     min-height: calc(100vh + 1px);
     height: fit-content;
@@ -311,7 +313,7 @@ body {
 }
 
 @media only screen and (max-width: 1180px) {
-    
+
     [data-theme="light"] {
         --factor: 0.7;
     }

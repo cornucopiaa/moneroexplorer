@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import {Observable} from 'rxjs';
 import { Home } from '../data/home';
 
+// for local replace to '/site-api'
 const baseUrl = 'https://xmrscan-docker-4ogsjv4w2q-ez.a.run.app'
 
 @Injectable({
