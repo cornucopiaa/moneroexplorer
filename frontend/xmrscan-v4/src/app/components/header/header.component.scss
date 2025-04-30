@@ -285,13 +285,17 @@
 
   &__logo-wrapper {
     display: flex;
-    align-items: flex-end;
+    align-items: center;
     gap: 5px;
+    text-decoration: none;
   }
 
   &__logo-text {
     color: var(--logoColor);
     font-weight: 500;
+    align-self: flex-end;
+    position: relative;
+    top: -1px;
   }
 
   &__links {
