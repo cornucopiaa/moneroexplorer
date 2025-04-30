@@ -7,11 +7,12 @@ import { TransactionComponent } from './components/transaction/transaction.compo
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 
 export const routes: Routes = [
-    {path: '', component: HomeComponent, title: 'Monero Block Explorer · xmrscan.com'},
-    {path: 'blocks', component: BlocksMempoolComponent, data: {mode: 0}, title: 'Blocks · xmrscan.com'},
-    {path: 'mempool', component: BlocksMempoolComponent, data: {mode: 1}, title: 'Mempool · xmrscan.com'},
-    {path: 'block/:height', component: BlockComponent, title: 'Block · xmrscan.com'},
-    {path: 'transaction/:hash', component: TransactionComponent, title: 'Transaction · xmrscan.com'},
-    {path: '**', component: PageNotFoundComponent, title: '404 Page Not Found · xmrscan.com'}
+    {path: '', component: HomeComponent, title: 'Monero Block Explorer · moneroexplorer.org'},
+    {path: 'blocks', component: BlocksMempoolComponent, data: {mode: 0}, title: 'Blocks · moneroexplorer.org'},
+    {path: 'mempool', component: BlocksMempoolComponent, data: {mode: 1}, title: 'Mempool · moneroexplorer.org'},
+    {path: 'block/:height', component: BlockComponent, title: 'Block · moneroexplorer.org'},
+    {path: 'transaction/:hash', component: TransactionComponent, title: 'Transaction · moneroexplorer.org'},
+    {path: '**', component: PageNotFoundComponent, title: '404 Page Not Found · moneroexplorer.org'}
 
 ];
+
