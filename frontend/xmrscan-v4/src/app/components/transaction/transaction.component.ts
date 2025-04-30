@@ -48,7 +48,7 @@ export class TransactionComponent {
     })
   }
 
-  ngAfterViewInit(): void {    
+  ngAfterViewInit(): void {
     this.transitionIn();
   }
 
@@ -159,7 +159,7 @@ export class TransactionComponent {
       if (this.address.length != 95 || (!this.address.startsWith('4') && !this.address.startsWith('8'))) {
         this.displayError('address');
         return;
-      } 
+      }
       if (!/^[0-9a-fA-F]+$/.test(this.key)) {
         this.displayError('key');
         return;
@@ -185,7 +185,7 @@ export class TransactionComponent {
       if (this.address.length != 95 || (!this.address.startsWith('4') && !this.address.startsWith('8'))) {
         this.displayError('address');
         return;
-      } 
+      }
       if (!/^[0-9a-fA-F]+$/.test(this.key)) {
         this.displayError('key');
         return;
@@ -285,7 +285,7 @@ export class TransactionComponent {
       this.tx = JSON.parse(sessionStorage.getItem(this.txHash)!);
       this.loading = false
     }
-    this.titleService.setTitle('Tx #' + this.txHash + ' · xmrscan.com');
+    this.titleService.setTitle('Tx #' + this.txHash + ' | moneroexplorer');
   }
 
   copy(text: string, event: Event) {

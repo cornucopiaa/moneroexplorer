@@ -36,9 +36,9 @@ export class BlockComponent implements AfterViewInit, OnInit {
     })
   }
 
-  ngAfterViewInit(): void {    
+  ngAfterViewInit(): void {
     this.transitionIn();
-  } 
+  }
 
   getItemsArray(length: number): number[] {
     return Array.from({ length }, (_, index) => index + 1);
@@ -106,7 +106,7 @@ export class BlockComponent implements AfterViewInit, OnInit {
       this.block = JSON.parse(sessionStorage.getItem(this.blockHeight)!);
       this.loading = false
     }
-    this.titleService.setTitle('Block #' + this.blockHeight + ' · xmrscan.com');
+    this.titleService.setTitle('Block #' + this.blockHeight + ' | moneroexplorer');
   }
 
   copy(text: string) {
