@@ -13,5 +13,4 @@ export const routes: Routes = [
     {path: 'block/:height', component: BlockComponent, title: 'Block | moneroexplorer'},
     {path: 'transaction/:hash', component: TransactionComponent, title: 'Transaction | moneroexplorer'},
     {path: '**', component: PageNotFoundComponent, title: '404 Page Not Found | moneroexplorer'}
-
 ];

@@ -19,7 +19,7 @@ func GetNetworkInfo() (int, data.NetworkInfo) {
 	var returnNetworkInfo data.NetworkInfo
 
 	for retries := 0; retries < maxRetries; retries++ {
-		resp, err := http.Get("https://moneroexplorer.org/api/networkinfo")
+		resp, err := http.Get("http://127.0.0.1:8081/api/networkinfo")
 		if err != nil {
 			return resp.StatusCode, returnNetworkInfo
 		}
@@ -51,7 +51,7 @@ func GetBlockByNumber(number int) (int, data.BlockInfo) {
 	var returnBlock data.BlockInfo
 	returnBlock.Status = "fail"
 
-	url := fmt.Sprintf("https://moneroexplorer.org/api/block/%s", strconv.Itoa(number))
+	url := fmt.Sprintf("http://127.0.0.1:8081/api/block/%s", strconv.Itoa(number))
 	resp, err := http.Get(url)
 	if err != nil {
 		return resp.StatusCode, returnBlock
@@ -84,7 +84,7 @@ func GetMempool() (int, data.Mempool) {
 	var returnMempool data.Mempool
 	returnMempool.Status = "fail"
 
-	resp, err := http.Get("https://moneroexplorer.org/api/mempool")
+	resp, err := http.Get("http://127.0.0.1:8081/api/mempool")
 	if err != nil {
 		return resp.StatusCode, returnMempool
 	}
@@ -110,7 +110,7 @@ func GetProve(r *http.Request, mode string) (int, data.Prove) {
 	var returnProve data.Prove
 	returnProve.Status = "fail"
 
-	url := fmt.Sprintf("https://moneroexplorer.org/api/outputs?txhash=%s&address=%s&viewkey=%s&txprove=%s", chi.URLParam(r, "txhash"), chi.URLParam(r, "address"), chi.URLParam(r, "viewkey"), mode)
+	url := fmt.Sprintf("http://127.0.0.1:8081/api/outputs?txhash=%s&address=%s&viewkey=%s&txprove=%s", chi.URLParam(r, "txhash"), chi.URLParam(r, "address"), chi.URLParam(r, "viewkey"), mode)
 	resp, err := http.Get(url)
 
 	if err != nil {

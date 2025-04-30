@@ -12,7 +12,7 @@ func Serve() {
 	r := chi.NewRouter()
 	r.Use(middleware.Logger)
 	r.Use(cors.Handler(cors.Options{
-		AllowedOrigins: []string{"https://www.xmrscan.com", "https://*.xmrscan.com", "https://xmrscan.com"},
+		AllowedOrigins: []string{"https://www.moneroexplorer.org", "https://*.moneroexplorer.org", "https://moneroexplorer.org"},
 		AllowedMethods: []string{"GET"},
 		AllowedHeaders: []string{"*"},
 	}))
@@ -25,5 +25,5 @@ func Serve() {
 	r.Get("/search/{query}", GetSearchResult)
 	r.Get("/prove/{txhash}/{address}/{viewkey}/{mode}", GetProve)
 
-	http.ListenAndServe(":80", r)
+	http.ListenAndServe(":8082", r)
 }
