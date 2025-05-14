@@ -4,7 +4,7 @@ import { filter } from 'rxjs/operators'
 import { ProveResults, Transaction } from '../../data/transaction';
 import { TransactionService } from '../../service/transaction.service';
 import { FormsModule } from '@angular/forms';
-import { Title } from '@angular/platform-browser';
+import { Title, Meta } from '@angular/platform-browser';
 import {MatSnackBar, MatSnackBarModule} from '@angular/material/snack-bar';
 
 @Component({
@@ -285,7 +285,7 @@ export class TransactionComponent {
       this.tx = JSON.parse(sessionStorage.getItem(this.txHash)!);
       this.loading = false
     }
-    this.titleService.setTitle('Tx #' + this.txHash + ' | moneroexplorer');
+    this.titleService.setTitle(`Monero Transaction Overview – ${this.txHash} | MoneroExplorer`);
   }
 
   copy(text: string, event: Event) {

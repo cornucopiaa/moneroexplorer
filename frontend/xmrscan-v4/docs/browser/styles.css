@@ -2519,12 +2519,21 @@ body {
 }
 #frame {
   padding-top: 180px;
+  /*width: calc(1045px * var(--factor));*/
+  /*min-height: calc(100vh + 1px);*/
+  /*height: fit-content;*/
+  /*display: flex;*/
+  /*flex-direction: column;*/
+}
+
+.frame-wrapper {
   width: calc(1045px * var(--factor));
   min-height: calc(100vh + 1px);
   height: fit-content;
   display: flex;
   flex-direction: column;
 }
+
 #frame.hidden {
   margin-top: 25px;
   opacity: 0;

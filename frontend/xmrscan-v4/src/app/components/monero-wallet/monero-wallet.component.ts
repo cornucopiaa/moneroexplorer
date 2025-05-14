@@ -11,10 +11,10 @@ import {DOCUMENT} from '@angular/common';
   selector: 'app-home',
   standalone: true,
   imports: [MatSnackBarModule],
-  templateUrl: './home.component.html',
-  styleUrl: './home.component.scss'
+  templateUrl: './monero-wallet.component.html',
+  styleUrl: '../home/home.component.scss'
 })
-export class HomeComponent implements AfterViewInit, OnInit{
+export class MoneroWalletComponent implements AfterViewInit, OnInit{
 
   loading = true;
   home: Home = {
@@ -126,7 +126,7 @@ export class HomeComponent implements AfterViewInit, OnInit{
   ngOnInit(): void {
     this.loadHome();
 
-    const description = 'Access MoneroExplorer to search XMR transactions, blocks, and real-time Monero blockchain data securely and anonymously.'
+    const description = 'Find out how to look up addresses, verify transactions, track outputs, and manage your Monero wallet securely.'
     this.metaService.updateTag({ name: 'description', content: description});
     this.metaService.updateTag({ name: 'twitter:description', content: description});
     this.metaService.updateTag({ property: 'og:description', content: description});
@@ -139,26 +139,34 @@ export class HomeComponent implements AfterViewInit, OnInit{
       "mainEntity": [
         {
           "@type": "Question",
-          "name": "Can I find out who owns a Monero address?",
+          "name": "Are hardware wallets more secure than mobile wallets?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "No, Monero’s privacy-focused design prevents direct identification of address ownership."
+            "text": "Yes. Hardware wallets store your private keys offline, offering stronger protection against hacks."
           }
         },
         {
           "@type": "Question",
-          "name": "How often is blockchain data updated?",
+          "name": "Can I use multiple Monero wallets at once?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Blockchain data is updated in real-time as new blocks are confirmed."
+            "text": "Absolutely. You can manage and operate several wallets across mobile, desktop, and hardware platforms."
           }
         },
         {
           "@type": "Question",
-          "name": "Is Monero’s price highly volatile?",
+          "name": "Can others see my Monero wallet balance?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes, like other cryptocurrencies, Monero (XMR) experiences significant price fluctuations."
+            "text": "Only if you share your view key. Otherwise, balances remain private."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Are Monero wallet lookups traceable?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Thanks to Monero’s privacy-by-default design, third parties cannot trace lookups or transactions."
           }
         }
       ]

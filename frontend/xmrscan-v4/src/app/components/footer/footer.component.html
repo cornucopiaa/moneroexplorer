@@ -1,5 +1,16 @@
 <div class="footer font200">
-    <div id="switchTheme" class="footerElement button transitionFaster" (click)="switchTheme()">
+    <div class="footer__left footerElement">
+      <div class="footer__section-title lighterText">About Monero Explorer</div>
+      <ul class="footer__section-list">
+        <li><a href="#/insights/monero-wallet" class="footer__section-link">Wallet Comparison</a></li>
+        <li><a href="#/insights/buy-sell-monero" class="footer__section-link">Buying and Selling XMR</a></li>
+        <li><a href="#/insights/mining-monero-xmr" class="footer__section-link">Mining Monero</a></li>
+        <li><a href="#/insights/xmr-price-tracker" class="footer__section-link">Price Tracker and Market Overview</a></li>
+      </ul>
+    </div>
+    <div class="footer__right">
+      <div id="switchTheme" class="footerElement button transitionFaster" (click)="switchTheme()">
         <span class="material-symbols-rounded" id="switchThemeButton">dark_mode</span></div>
-    <div class="footerElement">moneroexplorer.org</div>
+      <div class="footerElement">moneroexplorer.org</div>
+    </div>
 </div>

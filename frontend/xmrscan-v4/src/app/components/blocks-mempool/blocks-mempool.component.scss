@@ -176,8 +176,13 @@
 @media only screen and (max-width: 760px) {
 
     #frame {
-        display: flex;
-        align-items: center;
+        //display: flex;
+        //align-items: center;
+    }
+
+    .frame-wrapper {
+      display: flex;
+      align-items: center;
     }
 
     .heading {
@@ -220,7 +225,7 @@
     .el1 {
         min-width: 400px;
     }
-    
+
     .el2 {
         min-width: 400px;
     }
@@ -230,11 +235,11 @@
         display: flex;
         justify-content: space-between;
     }
-    
+
     .el3 {
         width: fit-content;
     }
-    
+
     .el4 {
         width: fit-content;
         font-size: 14px;
@@ -243,11 +248,11 @@
     .el5 {
         min-width: 400px;
     }
-    
+
     .el6 {
         min-width: 400px;
     }
-    
+
     .el7 {
         min-width: 400px;
         display: flex;
@@ -272,7 +277,7 @@
         border-radius: 17px;
         margin-left: 25px;
         width: 375px;
-    }   
+    }
 }
 
 @media only screen and (max-width: 470px) {

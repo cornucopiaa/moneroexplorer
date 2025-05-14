@@ -1,10 +1,18 @@
 #frame {
     padding-top: calc(350px*var(--factor));
-    width: calc(1350px*var(--factor));
-    height: fit-content;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    //width: calc(1350px*var(--factor));
+    //height: fit-content;
+    //display: flex;
+    //flex-direction: row;
+    //justify-content: space-between;
+}
+
+.frame-wrapper {
+  width: calc(1350px*var(--factor));
+  height: fit-content;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 .part {
@@ -169,11 +177,18 @@
 }
 
 @media only screen and (max-width: 1100px) {
-    #frame {
-        width: 600px;
-        justify-content: center;
-        flex-direction: column;
-        row-gap: 50px;
+    //#frame {
+    //    width: 600px;
+    //    justify-content: center;
+    //    flex-direction: column;
+    //    row-gap: 50px;
+    //}
+
+    .frame-wrapper {
+      width: 600px;
+      justify-content: center;
+      flex-direction: column;
+      row-gap: 50px;
     }
 
     .heading {
@@ -202,8 +217,12 @@
 }
 
 @media only screen and (max-width: 620px) {
-    #frame {
-        width: 450px;
+    //#frame {
+    //    width: 450px;
+    //}
+
+    .frame-wrapper {
+      width: 450px;
     }
 
     .part {
@@ -224,8 +243,12 @@
 }
 
 @media only screen and (max-width: 470px) {
-    #frame {
-        width: 350px;
+    //#frame {
+    //    width: 350px;
+    //}
+
+    .frame-wrapper {
+      width: 350px;
     }
 
     .card {

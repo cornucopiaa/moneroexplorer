@@ -214,11 +214,19 @@ body {
 
 #frame {
     padding-top: 180px;
-    width: calc(1045px*var(--factor));
-    min-height: calc(100vh + 1px);
-    height: fit-content;
-    display: flex;
-    flex-direction: column;
+    //width: calc(1045px*var(--factor));
+    //min-height: calc(100vh + 1px);
+    //height: fit-content;
+    //display: flex;
+    //flex-direction: column;
+}
+
+.frame-wrapper {
+  width: calc(1045px*var(--factor));
+  min-height: calc(100vh + 1px);
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
 }
 
 #frame.hidden {
@@ -261,6 +269,75 @@ body {
     padding-left: calc(15px*var(--factor));
     color: var(--textHeading);
     user-select: none;
+}
+
+.align-left {
+  width: 100%;
+  text-align: left;
+  padding-left: 0;
+}
+
+.blockCard-promo {
+  margin-bottom: 40px;
+  height: initial !important;
+  padding: 20px;
+  width: calc(1310px * var(--factor)) !important;
+
+  @media only screen and (max-width: 1100px) {
+    width: 560px !important;
+  }
+
+  @media only screen and (max-width: 620px) {
+    width: 410px !important;
+  }
+}
+
+.blockCard-faq {
+  margin-bottom: 40px;
+  margin-top: 30px;
+  height: initial !important;
+  padding: 20px;
+  width: calc(1310px * var(--factor)) !important;
+
+  @media only screen and (max-width: 1100px) {
+    width: 560px !important;
+  }
+
+  @media only screen and (max-width: 620px) {
+    width: 410px !important;
+  }
+}
+
+.blockCard-promo-ml {
+  margin: 30px 0;
+}
+
+.blockCard-promo--list {
+  align-self: flex-start;
+  list-style: none;
+  padding-left: 10px;
+
+  li {
+    margin: 10px 0;
+  }
+}
+
+.footer__section-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 0;
+}
+
+.footer__section-link {
+  text-decoration: none !important;
+  color: var(--text);
+}
+
+.section-question {
+  width: 100%;
 }
 
 .missingText {

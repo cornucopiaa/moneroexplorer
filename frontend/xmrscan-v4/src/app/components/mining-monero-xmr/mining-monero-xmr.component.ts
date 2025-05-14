@@ -11,10 +11,10 @@ import {DOCUMENT} from '@angular/common';
   selector: 'app-home',
   standalone: true,
   imports: [MatSnackBarModule],
-  templateUrl: './home.component.html',
-  styleUrl: './home.component.scss'
+  templateUrl: './mining-monero-xmr.component.html',
+  styleUrl: '../home/home.component.scss'
 })
-export class HomeComponent implements AfterViewInit, OnInit{
+export class MiningMoneroXmrComponent implements AfterViewInit, OnInit{
 
   loading = true;
   home: Home = {
@@ -126,7 +126,7 @@ export class HomeComponent implements AfterViewInit, OnInit{
   ngOnInit(): void {
     this.loadHome();
 
-    const description = 'Access MoneroExplorer to search XMR transactions, blocks, and real-time Monero blockchain data securely and anonymously.'
+    const description = 'Start mining Monero (XMR) easily with our guide. Learn about the best software, pools, hardware requirements, and setup tips.'
     this.metaService.updateTag({ name: 'description', content: description});
     this.metaService.updateTag({ name: 'twitter:description', content: description});
     this.metaService.updateTag({ property: 'og:description', content: description});
@@ -139,26 +139,18 @@ export class HomeComponent implements AfterViewInit, OnInit{
       "mainEntity": [
         {
           "@type": "Question",
-          "name": "Can I find out who owns a Monero address?",
+          "name": "Can I mine Monero with my PC?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "No, Monero’s privacy-focused design prevents direct identification of address ownership."
+            "text": "Yes! Monero was specifically designed to be CPU-minable. Even a mid-range laptop or desktop can start mining with minimal setup. Of course, higher-end CPUs will deliver better hashrates and returns."
           }
         },
         {
           "@type": "Question",
-          "name": "How often is blockchain data updated?",
+          "name": "Is mining Monero profitable?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Blockchain data is updated in real-time as new blocks are confirmed."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Is Monero’s price highly volatile?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes, like other cryptocurrencies, Monero (XMR) experiences significant price fluctuations."
+            "text": "Profitability depends heavily on your hardware's efficiency, the current Monero price, and your electricity cost. Use mining calculators to estimate profits based on your setup. Keep in mind that Monero’s RandomX algorithm helps maintain mining fairness, preventing large-scale ASIC domination."
           }
         }
       ]

@@ -3,7 +3,7 @@ import { AfterViewInit, OnInit, Component } from '@angular/core';
 import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
 import { filter } from 'rxjs/operators'
 import { BlocksService } from '../../service/blocks.service';
-import { Title } from '@angular/platform-browser';
+import {Meta, Title} from '@angular/platform-browser';
 import {MatSnackBar, MatSnackBarModule} from '@angular/material/snack-bar';
 
 @Component({
@@ -22,7 +22,7 @@ export class BlockComponent implements AfterViewInit, OnInit {
     status: undefined
   }
 
-  constructor(private router: Router, private route: ActivatedRoute, private service: BlocksService, private titleService: Title, private _snackBar: MatSnackBar) {
+  constructor(private router: Router, private route: ActivatedRoute, private service: BlocksService, private titleService: Title, private _snackBar: MatSnackBar, private metaService: Meta) {
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;
     this.router.events
     .pipe(filter((rs): rs is NavigationEnd => rs instanceof NavigationEnd))
@@ -106,7 +106,12 @@ export class BlockComponent implements AfterViewInit, OnInit {
       this.block = JSON.parse(sessionStorage.getItem(this.blockHeight)!);
       this.loading = false
     }
-    this.titleService.setTitle('Block #' + this.blockHeight + ' | moneroexplorer');
+    this.titleService.setTitle(`Monero Block Overview – Block ${this.blockHeight} | MoneroExplorer`);
+
+    const description = `Detailed overview of Monero block ${this.blockHeight}, including block height, timestamp, transactions, size, reward, and miner information.`
+    this.metaService.updateTag({ name: 'description', content: description});
+    this.metaService.updateTag({ name: 'twitter:description', content: description});
+    this.metaService.updateTag({ property: 'og:description', content: description});
   }
 
   copy(text: string) {

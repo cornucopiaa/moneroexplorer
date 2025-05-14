@@ -1,0 +1,145 @@
+<div id="frame">
+    <div class="card blockCard blockCard-promo">
+      <h1 class="heading font200 align-left">Mining Monero (XMR): Everything You Need to Know</h1>
+      <p class="align-left">Monero (XMR) mining is one of the few remaining profitable and accessible options for individual miners. Unlike Bitcoin, which now requires specialized hardware (ASICs), Monero can still be mined efficiently using consumer-grade CPUs and GPUs. Whether you're a beginner or looking to optimize an existing setup, this tutorial will walk you through the entire process of mining Monero—from selecting the right software to tuning your system for maximum results.</p>
+    </div>
+    <div class="frame-wrapper">
+      <div class="part transition hidden" id="part1">
+        <div class="headingContainer">
+          <div class="heading font200">Latest Blocks:</div>
+          <div class="viewAllButton font200 transitionFaster" (click)="navigateToBlocks()">View All</div>
+        </div>
+        <div class="content">
+          @if (!loading) {
+            @for (block of home.blocks; track block) {
+              <div class="card blockCard font100 transitionFast" (click)="navigateToBlock(block.data!.block_height)">
+                <div class="row">
+                  <div><span class="lighterText">Height: </span>{{ block.data!.block_height }}</div>
+                  <div class="age lighterText">{{ block.data!.relative_time }}</div>
+                </div>
+                <div class="row">
+                  <div><span class="lighterText">Hash: </span>{{ block.data!.hash.substring(0, 8)}} ··· {{ block.data!.hash.substring(block.data!.hash.length-8, block.data!.hash.length) }}</div>
+                  <div>{{ block.data!.txs.length }}
+                    @if (block.data!.txs.length == 1) {
+                      <span class="lighterText">Tx</span>
+                    } @else {
+                      <span class="lighterText">Txs</span>
+                    }
+                  </div>
+                </div>
+              </div>
+            }
+          } @else {
+            @for (item of getItemsArray(10); track item) {
+              <div class="card blockCard skeletonCard transition">
+                <div id="skeleton{{ 2*item }}" class="row skeleton skeletonRow hidden skeletonRowShort transition"></div>
+                <div id="skeleton{{ 2*item+1 }}" class="row skeleton skeletonRow hidden transition"></div>
+              </div>
+            }
+          }
+        </div>
+      </div>
+      <div class="part transition hidden" id="part2">
+        <div class="headingContainer">
+          <div class="heading font200">Mempool:</div>
+          <div class="viewAllButton font200 transitionFaster" (click)="navigateToMempool()">View All</div>
+        </div>
+        <div class="content">
+          @if (!loading) {
+            @for (tx of home.txs; track tx) {
+              <div class="card mempoolCard font100 transitionFast" (click)="navigateToTx(tx.tx_hash)">
+                <div class="row">
+                  @if (tx.payment_id8 == null || tx.payment_id8 == undefined || tx.payment_id8 == "") {
+                    <div><span class="lighterText">Payment ID: </span><span class="missingText">?</span></div>
+                  } @else {
+                    <div><span class="lighterText">Payment ID: </span>{{ tx.payment_id8.substring(0, 4)}} ··· {{ tx.payment_id8.substring(tx.payment_id8.length-4, tx.payment_id8.length) }}</div>
+                  }
+                </div>
+                <div class="row">
+                  <div><span class="lighterText">Hash: </span>{{tx.tx_hash.substring(0,8)}} ··· {{tx.tx_hash.substring(tx.tx_hash.length-8,tx.tx_hash.length)}}</div>
+                  <div>{{ (tx.tx_size/1000).toFixed(3) }} <span class="lighterText">kB</span></div>
+                </div>
+              </div>
+            }
+            @empty {
+              <div class="card emptyCard mempoolCard font100 transitionFast">
+                <div class="row emptyRow">
+                  <div><span class="lighterText">The Mempool is currently empty</span></div>
+                </div>
+              </div>
+            }
+          } @else {
+            @for (item of getItemsArray(10); track item) {
+              <div class="card mempoolCard skeletonCard transition">
+                <div id="skeleton2.{{ 2*item }}" class="row skeleton skeletonRow hidden skeletonRowShort transition"></div>
+                <div id="skeleton2.{{ 2*item+1 }}" class="row skeleton skeletonRow hidden transition"></div>
+              </div>
+            }
+          }
+        </div>
+      </div>
+    </div>
+
+    <div class="card blockCard blockCard-promo blockCard-promo-ml">
+      <h2 class="heading font200 align-left">Choosing the Best Monero Mining Software</h2>
+      <p class="align-left">Before you start mining, selecting the right software is crucial. Monero mining software connects your computer to the Monero blockchain network, processes transactions, and solves complex cryptographic problems.</p>
+      <p class="align-left">Here’s how to choose the best mining software for your system:</p>
+      <ul class="blockCard-promo--list">
+        <li>- CPU Mining:<br>
+          If you plan to mine Monero using a CPU, options like XMRig and SRBMiner are among the most efficient. These programs are optimized for RandomX, Monero’s proof-of-work algorithm, which favors CPU miners.</li>
+        <li>- GPU Mining:<br>
+          Although Monero is primarily CPU-friendly, GPU mining is still possible, particularly with AMD and Nvidia cards. XMR-Stak and XMRig both offer GPU support, but expect higher power consumption compared to CPU mining.</li>
+        <li>- Compatibility:<br>
+          Ensure the mining software you choose is compatible with your operating system (Windows, Linux, or macOS) and your specific hardware.</li>
+        <li>- Optimization Settings:<br>
+          Good mining programs offer advanced features such as CPU thread tuning, GPU overclocking settings, and low-power modes to improve efficiency.</li>
+      </ul>
+    </div>
+
+    <div class="card blockCard blockCard-promo blockCard-promo-ml">
+      <h2 class="heading font200 align-left">Join a Monero Mining Pool</h2>
+      <p class="align-left">Solo mining Monero is possible but highly unlikely to yield consistent results unless you have massive computing power. Joining a mining pool increases your chances of earning regular rewards by pooling your hashing power with other miners.</p>
+      <p class="align-left">Steps to join a Monero mining pool:</p>
+      <ul class="blockCard-promo--list">
+        <li>1. Choose a Reliable Pool:<br>
+          Some popular Monero mining pools include MineXMR, SupportXMR, and 2Miners. Compare pools based on their fees (usually 0.5%–1%), payout thresholds, and server locations.</li>
+        <li>2. Create an XMR Wallet:<br>
+          You'll need a Monero wallet address where your mining rewards will be sent. You can use official wallets like the Monero GUI Wallet, MyMonero, or a hardware wallet like Ledger.</li>
+        <li>3. Configure Your Mining Software:<br>
+          In your mining program’s configuration file, input the pool’s server address and your Monero wallet address. Most pools provide easy-to-follow setup instructions.</li>
+        <li>4. Start Mining:<br>
+          Launch the miner and monitor your hashrate, accepted shares, and payouts through your pool's dashboard.</li>
+      </ul>
+    </div>
+
+    <div class="card blockCard blockCard-promo blockCard-promo-ml">
+      <h2 class="heading font200 align-left">Optimize Your Mining Setup</h2>
+      <p class="align-left">Mining is not just about plugging in a device and letting it run. To maximize your profits and extend your hardware’s lifespan, optimization is key.</p>
+      <p class="align-left">Important areas to focus on:</p>
+      <ul class="blockCard-promo--list">
+        <li>1. Hardware Tuning:<br>
+
+          - CPU: Adjust thread count and priority settings to balance mining with system usability.<br>
+
+          - GPU: Fine-tune clock speeds, voltages, and memory timings. Undervolting can drastically reduce power usage while maintaining performance. Remember that GPU is generally less efficient than using a CPU for mining Monero.</li>
+        <li>2. Temperature Management:<br>
+          Keep your mining hardware cool. Install additional fans if necessary, or even consider dedicated cooling solutions like liquid cooling for serious operations.</li>
+        <li>3. Electricity Costs:<br>
+          Since mining consumes a significant amount of power, ensure you're aware of your local electricity rates. Sometimes switching to an off-peak plan can increase profitability.</li>
+        <li>4. Regular Software Updates:<br>
+          Mining software developers frequently release optimizations and security patches. Keep your mining program up-to-date to avoid bugs and ensure optimal performance.</li>
+      </ul>
+    </div>
+
+    <section class="card blockCard blockCard-faq">
+      <h3 class="heading font200 align-left">FAQs about Mining Monero</h3>
+      <div class="section-question">
+        <p class="align-left"><b>Can I mine Monero with my PC?</b></p>
+        <p class="align-left">Yes! Monero was specifically designed to be CPU-minable. Even a mid-range laptop or desktop can start mining with minimal setup. Of course, higher-end CPUs will deliver better hashrates and returns.</p>
+      </div>
+      <div class="section-question">
+        <p class="align-left"><b>Is mining Monero profitable?</b></p>
+        <p class="align-left">Profitability depends heavily on your hardware's efficiency, the current Monero price, and your electricity cost. Use mining calculators to estimate profits based on your setup. Keep in mind that Monero’s RandomX algorithm helps maintain mining fairness, preventing large-scale ASIC domination.</p>
+      </div>
+    </section>
+</div>

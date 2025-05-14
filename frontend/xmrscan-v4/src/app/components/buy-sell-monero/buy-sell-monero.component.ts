@@ -11,10 +11,10 @@ import {DOCUMENT} from '@angular/common';
   selector: 'app-home',
   standalone: true,
   imports: [MatSnackBarModule],
-  templateUrl: './home.component.html',
-  styleUrl: './home.component.scss'
+  templateUrl: './buy-sell-monero.component.html',
+  styleUrl: '../home/home.component.scss'
 })
-export class HomeComponent implements AfterViewInit, OnInit{
+export class BuySellMoneroComponent implements AfterViewInit, OnInit{
 
   loading = true;
   home: Home = {
@@ -126,7 +126,7 @@ export class HomeComponent implements AfterViewInit, OnInit{
   ngOnInit(): void {
     this.loadHome();
 
-    const description = 'Access MoneroExplorer to search XMR transactions, blocks, and real-time Monero blockchain data securely and anonymously.'
+    const description = 'Learn how to buy and sell Monero (XMR) securely, including using ATMs, exchanges, and anonymous methods. Start trading XMR confidently.'
     this.metaService.updateTag({ name: 'description', content: description});
     this.metaService.updateTag({ name: 'twitter:description', content: description});
     this.metaService.updateTag({ property: 'og:description', content: description});
@@ -139,26 +139,18 @@ export class HomeComponent implements AfterViewInit, OnInit{
       "mainEntity": [
         {
           "@type": "Question",
-          "name": "Can I find out who owns a Monero address?",
+          "name": "Is it legal to buy Monero?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "No, Monero’s privacy-focused design prevents direct identification of address ownership."
+            "text": "Yes, buying Monero is legal in most countries, although a few jurisdictions impose restrictions or discourage the use of privacy coins. Always check your local laws before purchasing."
           }
         },
         {
           "@type": "Question",
-          "name": "How often is blockchain data updated?",
+          "name": "How to sell Monero anonymously?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Blockchain data is updated in real-time as new blocks are confirmed."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Is Monero’s price highly volatile?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes, like other cryptocurrencies, Monero (XMR) experiences significant price fluctuations."
+            "text": "The best ways to sell Monero anonymously include using peer-to-peer platforms like LocalMonero, exchanging via crypto swap services that don’t require KYC, or converting XMR into other privacy coins through decentralized exchanges."
           }
         }
       ]

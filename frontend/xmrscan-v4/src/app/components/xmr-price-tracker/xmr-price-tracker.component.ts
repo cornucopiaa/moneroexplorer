@@ -11,10 +11,10 @@ import {DOCUMENT} from '@angular/common';
   selector: 'app-home',
   standalone: true,
   imports: [MatSnackBarModule],
-  templateUrl: './home.component.html',
-  styleUrl: './home.component.scss'
+  templateUrl: './xmr-price-tracker.component.html',
+  styleUrl: '../home/home.component.scss'
 })
-export class HomeComponent implements AfterViewInit, OnInit{
+export class XmrPriceTrackerComponent implements AfterViewInit, OnInit{
 
   loading = true;
   home: Home = {
@@ -126,7 +126,7 @@ export class HomeComponent implements AfterViewInit, OnInit{
   ngOnInit(): void {
     this.loadHome();
 
-    const description = 'Access MoneroExplorer to search XMR transactions, blocks, and real-time Monero blockchain data securely and anonymously.'
+    const description = 'Get real-time Monero (XMR) price updates, market insights, and historical data trends. Learn how to track XMR to USD value using trusted cryptocurrency market tools.'
     this.metaService.updateTag({ name: 'description', content: description});
     this.metaService.updateTag({ name: 'twitter:description', content: description});
     this.metaService.updateTag({ property: 'og:description', content: description});
@@ -139,26 +139,18 @@ export class HomeComponent implements AfterViewInit, OnInit{
       "mainEntity": [
         {
           "@type": "Question",
-          "name": "Can I find out who owns a Monero address?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "No, Monero’s privacy-focused design prevents direct identification of address ownership."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "How often is blockchain data updated?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Blockchain data is updated in real-time as new blocks are confirmed."
-          }
-        },
-        {
-          "@type": "Question",
           "name": "Is Monero’s price highly volatile?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes, like other cryptocurrencies, Monero (XMR) experiences significant price fluctuations."
+            "text": "Yes, like most cryptocurrencies, Monero’s price experiences significant fluctuations. Its emphasis on privacy can sometimes result in sharper reactions to regulatory news compared to more transparent coins like Bitcoin."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Where is Monero’s price sourced from?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Monero’s price is aggregated from a wide range of cryptocurrency exchanges worldwide. Tools like CoinGecko, CoinMarketCap, and TradingView collect and average prices from dozens of markets to provide accurate data."
           }
         }
       ]
