@@ -402,3 +402,16 @@ body {
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+p {
+  margin: 10px 0;
+}
+
+ul, ol {
+  margin: 4px 0;
+}
+
+.footer__section-title {
+  color: #296699;
+  margin-bottom: 15px;
+}
