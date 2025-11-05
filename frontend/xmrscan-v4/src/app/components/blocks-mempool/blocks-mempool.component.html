@@ -1,7 +1,7 @@
 <div id="frame" class="hidden transition">
     @if (mode === 0) {
         <div id="path" class="path font100 hidden transition"><span class="pathInactive transitionFaster" (click)="navigateToHome()">Home</span><span class="pathDot">  ·  </span> Blocks</div>
-        <h1 class="heading font200">Blocks:</h1>
+        <h1 class="heading font200">Monero Blocks:</h1>
     } @else {
         <div id="path" class="path font100 hidden transition"><span class="pathInactive transitionFaster" (click)="navigateToHome()">Home</span><span class="pathDot">  ·  </span> Mempool</div>
         @if (mempool.data?.txs?.length === 0) {
@@ -19,7 +19,7 @@
                     <div class="blockCard blockCard{{count%2}} transitionFast" id="blockCard{{count}}" (click)="navigateToBlock(block.data!.block_height)">
                         <div class="blockCardContainer font100">
                             <div class="blockCardElement el1"><span class="lighterText">Height: </span>{{ block.data!.block_height }}</div>
-                            <div class="blockCardElement el2"><span class="lighterText">Hash: </span>{{ block.data!.hash.substring(0,8) }} ··· {{ block.data!.hash.substring(block.data!.hash.length-8,block.data!.hash.length) }}</div>
+                            <div class="blockCardElement el2"><span class="lighterText">Hash: </span><span class="hashWrap">{{ block.data!.hash }}</span></div>
                             @if (first) {
                                 <div id="newBadge{{ count }}" class="newBadge unrevealed font200 transition">New</div>
                             }
