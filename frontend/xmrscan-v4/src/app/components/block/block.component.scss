@@ -29,14 +29,16 @@
 }
 
 .copyRow {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 5px;
-    flex-wrap: wrap;
+    display: block;
     word-wrap: break-word;
     overflow-wrap: break-word;
     word-break: break-all;
+}
+
+.copyRow span.material-symbols-rounded {
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 5px;
 }
 
 #copyIcon {
