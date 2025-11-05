@@ -5,10 +5,21 @@
     <span class="header-top__logo-text">Explorer</span>
   </a>
   <div class="header-top__links">
-    <a href="https://btcmempool.org/"><img src="/assets/icons/icon-mempool.svg" /></a>
-    <a href="https://btcscan.org/"><img src="/assets/icons/icon-btc.svg" /></a>
-    <a href="https://ethscan.org/"><img src="/assets/icons/icon-eth.svg" /></a>
-    <a href="https://xmrscan.org/"><img src="/assets/icons/icon-monero-logo.svg" /></a>
+    <button mat-button [matMenuTriggerFor]="explorersMenu" class="explorers-menu-trigger">
+      <span class="material-symbols-rounded explorers-icon">menu</span>
+    </button>
+    <mat-menu #explorersMenu="matMenu" class="explorers-dropdown">
+      <div class="explorers-dropdown__header">Explorers</div>
+      <a *ngFor="let explorer of explorers"
+         mat-menu-item
+         [href]="explorer.url"
+         target="_blank"
+         rel="external"
+         class="explorers-dropdown__item">
+        <img [src]="explorer.iconPath" width="16" height="16" [alt]="explorer.name" />
+        <span>{{ explorer.name }}</span>
+      </a>
+    </mat-menu>
     <a href="/"><img src="/assets/icons/icon-monero-logo-root.svg" /></a>
   </div>
 </div>

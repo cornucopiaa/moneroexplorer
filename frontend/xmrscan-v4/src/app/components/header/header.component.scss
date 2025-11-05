@@ -307,3 +307,61 @@
     gap: 14px;
   }
 }
+
+// Explorers menu styles
+.explorers-menu-trigger {
+  min-width: auto !important;
+  padding: 0 !important;
+  height: auto !important;
+  line-height: normal !important;
+
+  .explorers-icon {
+    font-size: 24px;
+    color: var(--text);
+    cursor: pointer;
+    transition: color 0.2s ease;
+
+    &:hover {
+      color: var(--logoColor);
+    }
+  }
+}
+
+// Custom styling for Material menu
+::ng-deep .explorers-dropdown {
+  .mat-mdc-menu-content {
+    padding: 0 !important;
+  }
+
+  &__header {
+    border-bottom: 1px solid var(--searchBarBackground);
+    padding: 8px 16px;
+    font-size: 12px;
+    color: var(--searchBarText);
+    user-select: none;
+  }
+
+  &__item {
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px;
+    padding: 8px 16px !important;
+    font-size: 14px;
+    color: var(--searchBarText) !important;
+    text-decoration: none;
+    transition: all 0.075s ease;
+
+    &:hover {
+      color: var(--text) !important;
+      background-color: var(--searchBarBackground) !important;
+    }
+
+    img {
+      flex-shrink: 0;
+    }
+
+    span {
+      white-space: nowrap;
+    }
+  }
+}
