@@ -5,6 +5,18 @@
     <span class="header-top__logo-text">Explorer</span>
   </a>
   <div class="header-top__links">
+    <a href="https://btcscan.org/" target="_blank" rel="external" class="header-top__icon-link">
+      <img src="/assets/icons/icon-btc.svg" alt="BTC Explorer" />
+    </a>
+    <a href="https://ethscan.org/" target="_blank" rel="external" class="header-top__icon-link">
+      <img src="/assets/icons/icon-eth.svg" alt="ETH Explorer" />
+    </a>
+    <a href="https://xmrscan.org/" target="_blank" rel="external" class="header-top__icon-link">
+      <img src="/assets/icons/icon-monero-logo.svg" alt="XMR Explorer" />
+    </a>
+    <a href="https://btcmempool.org/" target="_blank" rel="external" class="header-top__icon-link">
+      <img src="/assets/icons/icon-mempool.svg" alt="BTC Mempool" />
+    </a>
     <button mat-button [matMenuTriggerFor]="explorersMenu" class="explorers-menu-trigger">
       <span class="material-symbols-rounded explorers-icon">menu</span>
     </button>
@@ -20,7 +32,9 @@
         <span>{{ explorer.name }}</span>
       </a>
     </mat-menu>
-    <a href="/"><img src="/assets/icons/icon-monero-logo-root.svg" /></a>
+    <a href="/" class="header-top__icon-link">
+      <img src="/assets/icons/icon-monero-logo-root.svg" alt="Home" />
+    </a>
   </div>
 </div>
 <header id="header">

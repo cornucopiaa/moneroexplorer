@@ -306,6 +306,30 @@
     align-items: center;
     gap: 14px;
   }
+
+  &__icon-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+    opacity: 0.8;
+
+    &:hover {
+      transform: translateY(-2px) scale(1.1);
+      opacity: 1;
+    }
+
+    img {
+      width: 24px;
+      height: 24px;
+      display: block;
+    }
+
+    @media only screen and (max-width: 620px) {
+      display: none;
+    }
+  }
 }
 
 // Explorers menu styles
@@ -352,7 +376,6 @@
   &__item {
     display: flex !important;
     align-items: center !important;
-    gap: 12px;
     padding: 8px 16px !important;
     font-size: 14px;
     color: var(--searchBarText) !important;
@@ -372,6 +395,7 @@
       width: 16px;
       height: 16px;
       display: block;
+      margin-right: 12px;
     }
 
     span {
