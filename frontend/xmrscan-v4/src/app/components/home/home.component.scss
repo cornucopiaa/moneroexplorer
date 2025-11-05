@@ -114,12 +114,14 @@
 .cardContainer {
     display: grid;
     grid-template-columns: auto 1fr auto auto;
-    grid-template-rows: auto;
+    grid-template-rows: auto auto;
     column-gap: calc(20px*var(--factor));
     row-gap: calc(10px*var(--factor));
     width: calc(570px*var(--factor));
+    min-height: calc(110px*var(--factor));
     height: fit-content;
     padding: calc(20px*var(--factor));
+    align-content: start;
 }
 
 .cardElement {
