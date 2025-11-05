@@ -111,17 +111,18 @@
 }
 
 .el5 {
-    width: calc(387px*var(--factor));
+    grid-column: 1 / -1;
+    min-width: 0;
 }
 
 .el6 {
-    width: calc(396px*var(--factor));
+    width: auto;
+    white-space: nowrap;
 }
 
 .el7 {
-    width: calc(177px*var(--factor));
-    display: flex;
-    justify-content: flex-end;
+    width: auto;
+    white-space: nowrap;
 }
 
 .skeletonBlockCardContainer {
@@ -261,17 +262,18 @@
     }
 
     .el5 {
-        min-width: 400px;
+        width: 100%;
+        max-width: 400px;
     }
 
     .el6 {
-        min-width: 400px;
+        width: 100%;
+        max-width: 400px;
     }
 
     .el7 {
-        min-width: 400px;
-        display: flex;
-        justify-content: flex-start;
+        width: 100%;
+        max-width: 400px;
     }
 
     .newBadge {
