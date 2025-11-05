@@ -1,11 +1,11 @@
 <div id="frame" class="hidden transition">
     <div id="path" class="path font100 hidden transition"><span class="pathInactive transitionFaster" (click)="navigateToHome()">Home</span><span class="pathDot">  ·  </span><span class="pathInactive transitionFaster" (click)="navigateToBlocks()">Blocks</span><span class="pathDot">  ·  </span> Block {{ block.data?.block_height }}</div>
-    <div class="heading font200">Block: {{ block.data?.block_height}}</div>
+    <h1 class="heading font200">Block: {{ block.data?.block_height}}</h1>
     <div class="blockInfoContainer">
         @if (!loading) {
             <div class="blockInfo font100">
                 <div class="row">
-                    <div class="copyRow"><span class="lighterText">Hash: </span>{{ block.data!.hash.substring(0,8) }} ··· {{ block.data!.hash.substring(block.data!.hash.length-8,block.data!.hash.length) }} <span class="material-symbols-rounded transitionFast" id="copyIcon" (click)="copy(block.data!.hash)">content_copy</span></div>
+                    <div class="copyRow"><span class="lighterText">Hash: </span>{{ block.data!.hash }} <span class="material-symbols-rounded transitionFast" id="copyIcon" (click)="copy(block.data!.hash)">content_copy</span></div>
                     <div class="age lighterText">{{ block.data!.relative_time }}</div>
                 </div>
                 <div class="row">
@@ -34,6 +34,12 @@
             }
         </div>
     </div>
+    @if (!loading) {
+        <section class="card blockCard blockCard-summary">
+            <h2 class="heading font200 align-left">Block Summary</h2>
+            <p class="align-left">Monero block #{{ block.data!.block_height }} was mined {{ block.data!.relative_time }}. This block contains {{ block.data!.txs.length }} {{ block.data!.txs.length === 1 ? 'transaction' : 'transactions' }} with a total size of {{ (block.data!.size/1000).toFixed(3) }} kB. The block hash is {{ block.data!.hash }}.</p>
+        </section>
+    }
     <div class="heading font200">Transactions: <span class="lighterText">{{ block.data?.txs?.length }}</span></div>
     <div class="content">
         @if (!loading) {
