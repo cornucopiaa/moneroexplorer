@@ -91,12 +91,6 @@
         </div>
         <div id="proveResult" class="proveResult transition hidden font200"></div>
     </div>
-    @if (!loading) {
-        <section class="card blockCard blockCard-summary">
-            <h2 class="heading font200 align-left">Transaction Summary</h2>
-            <p class="align-left">Monero transaction {{ tx.data!.tx_hash }} was {{ tx.data!.confirmations >= 10 ? 'confirmed' : 'confirming' }} in block #{{ tx.data!.block_height }} with {{ tx.data!.confirmations }} {{ tx.data!.confirmations === 1 ? 'confirmation' : 'confirmations' }}. The transaction has {{ tx.data!.inputs?.length || 0 }} {{ tx.data!.inputs?.length === 1 ? 'input' : 'inputs' }} and {{ tx.data!.outputs?.length || 0 }} {{ tx.data!.outputs?.length === 1 ? 'output' : 'outputs' }}, with a size of {{ (tx.data!.tx_size/1000).toFixed(3) }} kB and a fee of {{ tx.data!.tx_fee/1000000000000 }} XMR.</p>
-        </section>
-    }
     <div class="contentContainer">
         <div class="part">
             <div class="headingContainer">
@@ -173,5 +167,11 @@
             </div>
         </div>
     </div>
+    @if (!loading) {
+        <section class="card blockCard blockCard-summary">
+            <h2 class="heading font200 align-left">Transaction Summary</h2>
+            <p class="align-left">Monero transaction {{ tx.data!.tx_hash }} was {{ tx.data!.confirmations >= 10 ? 'confirmed' : 'confirming' }} in block #{{ tx.data!.block_height }} with {{ tx.data!.confirmations }} {{ tx.data!.confirmations === 1 ? 'confirmation' : 'confirmations' }}. The transaction has {{ tx.data!.inputs?.length || 0 }} {{ tx.data!.inputs?.length === 1 ? 'input' : 'inputs' }} and {{ tx.data!.outputs?.length || 0 }} {{ tx.data!.outputs?.length === 1 ? 'output' : 'outputs' }}, with a size of {{ (tx.data!.tx_size/1000).toFixed(3) }} kB and a fee of {{ tx.data!.tx_fee/1000000000000 }} XMR.</p>
+        </section>
+    }
 </div>
 

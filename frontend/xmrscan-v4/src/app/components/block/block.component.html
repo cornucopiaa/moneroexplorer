@@ -34,12 +34,6 @@
             }
         </div>
     </div>
-    @if (!loading) {
-        <section class="card blockCard blockCard-summary">
-            <h2 class="heading font200 align-left">Block Summary</h2>
-            <p class="align-left">Monero block #{{ block.data!.block_height }} was mined {{ block.data!.relative_time }}. This block contains {{ block.data!.txs.length }} {{ block.data!.txs.length === 1 ? 'transaction' : 'transactions' }} with a total size of {{ (block.data!.size/1000).toFixed(3) }} kB. The block hash is {{ block.data!.hash }}.</p>
-        </section>
-    }
     <div class="heading font200">Transactions: <span class="lighterText">{{ block.data?.txs?.length }}</span></div>
     <div class="content">
         @if (!loading) {
@@ -66,4 +60,10 @@
             }
         }
     </div>
+    @if (!loading) {
+        <section class="card blockCard blockCard-summary">
+            <h2 class="heading font200 align-left">Block Summary</h2>
+            <p class="align-left">Monero block #{{ block.data!.block_height }} was mined {{ block.data!.relative_time }}. This block contains {{ block.data!.txs.length }} {{ block.data!.txs.length === 1 ? 'transaction' : 'transactions' }} with a total size of {{ (block.data!.size/1000).toFixed(3) }} kB. The block hash is {{ block.data!.hash }}.</p>
+        </section>
+    }
 </div>
