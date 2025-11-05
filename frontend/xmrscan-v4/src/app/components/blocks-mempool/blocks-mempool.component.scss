@@ -73,7 +73,7 @@
     row-gap: calc(10px*var(--factor));
     width: calc(960px*var(--factor));
     height: fit-content;
-    padding: calc(15px*var(--factor)) 0;
+    padding: calc(20px*var(--factor));
 }
 
 .blockCardElement {
@@ -226,7 +226,7 @@
     .blockCardContainer {
         display: flex;
         flex-direction: column;
-        padding: 15px 0 15px 25px;
+        padding: 20px 25px;
         width: 100%;
         row-gap: 12px;
     }
