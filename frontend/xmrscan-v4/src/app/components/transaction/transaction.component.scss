@@ -316,12 +316,15 @@ textarea {
 
 .card2 {
     width: 100%;
-    height: calc(135px*var(--factor));
+    min-height: calc(135px*var(--factor));
+    height: fit-content;
     border-radius: calc(39px*var(--factor));
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: center;
     align-items: center;
+    gap: calc(12px*var(--factor));
+    padding: calc(20px*var(--factor));
     font-size: calc(22px*var(--factor));
     color: var(--text);
     box-shadow: var(--boxShadow) 0px 1px 4px;
@@ -583,11 +586,13 @@ textarea {
 
     .card2 {
         font-size: 20px;
-        height: 120px;
+        min-height: 120px;
+        padding: 20px;
     }
 
     .singleRow2 {
-        width: 400px;
+        width: 100%;
+        max-width: 400px;
         height: fit-content;
     }
 
@@ -682,11 +687,13 @@ textarea {
     }
 
     .singleRow2 {
-        width: 320px;
+        width: 100%;
+        max-width: 320px;
     }
 
     .card2 {
         font-size: 17px;
+        padding: 20px;
     }
 
     .skeletonRow {
