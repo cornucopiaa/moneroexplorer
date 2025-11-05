@@ -40,15 +40,13 @@
             @for (tx of block.data!.txs; track tx; let count = $index) {
                 <div class="blockCard blockCard{{ count%2 }} transitionFast" (click)="navigateToTx(tx.tx_hash)">
                     <div class="blockCardContainer font100">
-                        <div class="blockCardElement el5"><span class="lighterText">Hash: </span>{{ tx.tx_hash.substring(0,8) }} ··· {{ tx.tx_hash.substring(tx.tx_hash.length-8,tx.tx_hash.length) }}</div>
+                        <div class="blockCardElement el5"><span class="lighterText">Hash: </span><span class="hashWrap">{{ tx.tx_hash }}</span></div>
                         @if (tx.payment_id8 == null || tx.payment_id8 == undefined || tx.payment_id8 == "") {
                             <div class="blockCardElement el6"><span class="lighterText">Payment ID: </span><span class="missingText">?</span></div>
                         } @else {
                             <div class="blockCardElement el6"><span class="lighterText">Payment ID: </span>{{ tx.payment_id8 }}</div>
                         }
-                        <div class="el7">
-                            <div class="blockCardElement"><span class="lighterText">Size: </span>{{ (tx.tx_size/1000).toFixed(3) }} kB</div>
-                        </div>
+                        <div class="blockCardElement el7"><span class="lighterText">Size: </span>{{ (tx.tx_size/1000).toFixed(3) }} kB</div>
                     </div>
                 </div>
             }

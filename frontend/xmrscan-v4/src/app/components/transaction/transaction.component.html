@@ -108,7 +108,7 @@
                                 <div><span class="lighterText">Amount: </span> {{ (input.amount/1000000000000).toFixed(9) }} ɱ</div>
                             </div>
                             <div class="singleRow2">
-                                <div class="copyRow"><span class="lighterText">Key Image: </span>{{ input.key_image.substring(0,8) }} ··· {{ input.key_image.substring(input.key_image.length-8, input.key_image.length) }} <span class="material-symbols-rounded transitionFast copyIcon" id="copyIconInput{{count}}" (click)="copy(input.key_image, $event)">content_copy</span></div>
+                                <div class="copyRow"><span class="lighterText">Key Image: </span><span class="hashWrap">{{ input.key_image }}</span> <span class="material-symbols-rounded transitionFast copyIcon" id="copyIconInput{{count}}" (click)="copy(input.key_image, $event)">content_copy</span></div>
                             </div>
                         </div>
                     }
@@ -145,7 +145,7 @@
                                 <div><span class="lighterText">Amount: </span> {{ (output.amount/1000000000000).toFixed(9) }} ɱ</div>
                             </div>
                             <div class="singleRow2">
-                                <div class="copyRow"><span class="lighterText">Public Key: </span>{{ output.public_key.substring(0,8) }} ··· {{ output.public_key.substring(output.public_key.length-8, output.public_key.length) }} <span class="material-symbols-rounded transitionFast copyIcon" id="copyIconOutput{{count}}" (click)="copy(output.public_key, $event)">content_copy</span></div>
+                                <div class="copyRow"><span class="lighterText">Public Key: </span><span class="hashWrap">{{ output.public_key }}</span> <span class="material-symbols-rounded transitionFast copyIcon" id="copyIconOutput{{count}}" (click)="copy(output.public_key, $event)">content_copy</span></div>
                             </div>
                         </div>
                     }

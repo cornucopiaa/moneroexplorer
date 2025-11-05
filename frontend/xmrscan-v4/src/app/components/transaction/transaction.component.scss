@@ -414,7 +414,13 @@ textarea {
 .copyRow {
     display: flex;
     align-items: center;
-    gap: 5px
+    gap: 5px;
+    flex-wrap: wrap;
+}
+
+.hashWrap {
+    word-break: break-all;
+    overflow-wrap: break-word;
 }
 
 .copyIcon {
