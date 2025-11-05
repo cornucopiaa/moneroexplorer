@@ -66,8 +66,8 @@
 
 .card {
     width: 100%;
-    min-height: calc(150px*var(--factor));
-    height: fit-content;
+    min-height: calc(200px*var(--factor));
+    height: calc(200px*var(--factor));
     border-radius: calc(40px*var(--factor));
     display: flex;
     justify-content: center;
@@ -77,6 +77,7 @@
     box-shadow:0px 0px 0px 3px transparent inset;
     user-select: none;
     box-shadow: var(--boxShadow) 0px 1px 4px;
+    overflow: hidden;
 }
 
 .emptyCard {
@@ -274,7 +275,8 @@
     }
 
     .card {
-        min-height: 140px;
+        min-height: 180px;
+        height: 180px;
         border-radius: 35px;
     }
 
