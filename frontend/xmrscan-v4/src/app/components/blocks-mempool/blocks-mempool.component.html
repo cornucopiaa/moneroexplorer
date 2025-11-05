@@ -1,15 +1,15 @@
 <div id="frame" class="hidden transition">
     @if (mode === 0) {
         <div id="path" class="path font100 hidden transition"><span class="pathInactive transitionFaster" (click)="navigateToHome()">Home</span><span class="pathDot">  ·  </span> Blocks</div>
-        <div class="heading font200">Blocks:</div>
+        <h1 class="heading font200">Blocks:</h1>
     } @else {
         <div id="path" class="path font100 hidden transition"><span class="pathInactive transitionFaster" (click)="navigateToHome()">Home</span><span class="pathDot">  ·  </span> Mempool</div>
         @if (mempool.data?.txs?.length === 0) {
-            <div class="heading font200">Mempool: <span class="lighterText">Empty</span></div>
+            <h1 class="heading font200">Mempool: <span class="lighterText">Empty</span></h1>
         } @else if (mempool.data?.txs?.length === 1) {
-            <div class="heading font200">Mempool: <span class="lighterText">1 Tx</span></div>
+            <h1 class="heading font200">Mempool: <span class="lighterText">1 Tx</span></h1>
         } @else {
-            <div class="heading font200">Mempool: <span class="lighterText">{{ mempool.data?.txs?.length }} Txs</span></div>
+            <h1 class="heading font200">Mempool: <span class="lighterText">{{ mempool.data?.txs?.length }} Txs</span></h1>
         }
     }
     <div class="content">
