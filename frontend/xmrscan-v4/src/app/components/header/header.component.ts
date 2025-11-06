@@ -29,7 +29,7 @@ export class HeaderComponent {
     { name: 'ETH Explorer', url: 'https://ethscan.org/', iconPath: '/assets/icons/icon-eth.svg' },
     { name: 'XMR Explorer', url: 'https://xmrscan.org/', iconPath: '/assets/icons/icon-monero-logo.svg' },
     { name: 'Monero Explorer', url: 'https://moneroexplorer.org/#/', iconPath: '/assets/icons/icon-monero-logo-root.svg' },
-    { name: 'BTC Mempool', url: 'https://btcmempool.org/', iconPath: '/assets/icons/icon-mempool.png' },
+    { name: 'BTC Mempool', url: 'https://btcmempool.org/', iconPath: '/assets/icons/icon-mempool-logo.png' },
     { name: 'BTC Fee', url: 'https://btcfee.org/', iconPath: '/assets/icons/icon-btc-fee.svg' },
     { name: 'BTC Fees', url: 'https://btcfees.org/', iconPath: '/assets/icons/icon-btc-fees.svg' }
   ];
