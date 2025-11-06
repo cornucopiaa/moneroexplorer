@@ -15,6 +15,7 @@ body {
     src: url("assets/fonts/OpenRunde-Regular.woff2");
     font-style: normal;
     font-weight: 100;
+    font-display: swap;
 }
 
 @font-face {
@@ -22,6 +23,7 @@ body {
     src: url("assets/fonts/OpenRunde-Medium.woff2");
     font-style: normal;
     font-weight: 200;
+    font-display: swap;
 }
 
 @font-face {
@@ -29,6 +31,7 @@ body {
     src: url("assets/fonts/OpenRunde-Semibold.woff2");
     font-style: normal;
     font-weight: 300;
+    font-display: swap;
 }
 
 @font-face {
@@ -36,6 +39,7 @@ body {
     src: url("assets/fonts/OpenRunde-Bold.woff2");
     font-style: normal;
     font-weight: 400;
+    font-display: swap;
 }
 
 [data-theme="light"] {
