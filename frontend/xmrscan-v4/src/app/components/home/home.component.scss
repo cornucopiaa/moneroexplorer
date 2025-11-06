@@ -18,6 +18,7 @@
 .part {
     width: calc(655px*var(--factor));
     height: fit-content;
+    min-height: 500px;
     margin-top: 0px;
 }
 
@@ -78,6 +79,7 @@
     user-select: none;
     box-shadow: var(--boxShadow) 0px 1px 4px;
     overflow: hidden;
+    contain: layout;
 }
 
 .emptyCard {
@@ -100,7 +102,6 @@
 }
 
 .part.hidden {
-    margin-top: 25px;
     opacity: 0;
 }
 
@@ -227,7 +228,6 @@
 }
 
 .skeletonRow.hidden {
-    width: 20px;
     opacity: 0;
 }
 
