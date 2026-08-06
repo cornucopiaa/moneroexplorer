@@ -1,0 +1,154 @@
+<div id="frame">
+    <div class="card blockCard blockCard-promo">
+      <h1 class="heading font200 align-left">Monero (XMR) Price Tracker and Market Overview</h1>
+      <p class="align-left">Monero (XMR) is widely recognized for its focus on privacy and untraceability. Yet, like any cryptocurrency, its price can fluctuate significantly based on various market forces. Whether you're holding Monero for the long term or planning to make strategic trades, understanding how to track its price movements is essential. In this guide, you’ll learn about the different ways to monitor Monero’s price, historical trends, and the factors that influence its market value.</p>
+    </div>
+    <div class="frame-wrapper">
+      <div class="part transition hidden" id="part1">
+        <div class="headingContainer">
+          <div class="heading font200">Latest Blocks:</div>
+          <div class="viewAllButton font200 transitionFaster" (click)="navigateToBlocks()">View All</div>
+        </div>
+        <div class="content">
+          @if (!loading) {
+            @for (block of home.blocks; track block) {
+              <div class="card blockCard font100 transitionFast" (click)="navigateToBlock(block.data!.block_height)">
+                <div class="cardContainer">
+                  <div class="cardElement el1"><span class="lighterText">Height: </span>{{ block.data!.block_height }}</div>
+                  <div class="cardElement el2"><span class="lighterText">Hash: </span><span class="hashWrap">{{ block.data!.hash }}</span></div>
+                  <div class="cardElement el3">{{ block.data!.txs.length }}
+                    @if (block.data!.txs.length == 1) {
+                      <span class="lighterText">Tx</span>
+                    } @else {
+                      <span class="lighterText">Txs</span>
+                    }
+                  </div>
+                  <div class="cardElement el4 age lighterText">{{ block.data!.relative_time }}</div>
+                </div>
+              </div>
+            }
+          } @else {
+            @for (item of getItemsArray(10); track item) {
+              <div class="card blockCard skeletonCard transition">
+                <div id="skeleton{{ 2*item }}" class="row skeleton skeletonRow hidden skeletonRowShort transition"></div>
+                <div id="skeleton{{ 2*item+1 }}" class="row skeleton skeletonRow hidden transition"></div>
+              </div>
+            }
+          }
+        </div>
+      </div>
+      <div class="part transition hidden" id="part2">
+        <div class="headingContainer">
+          <div class="heading font200">Mempool:</div>
+          <div class="viewAllButton font200 transitionFaster" (click)="navigateToMempool()">View All</div>
+        </div>
+        <div class="content">
+          @if (!loading) {
+            @for (tx of home.txs; track tx) {
+              <div class="card mempoolCard font100 transitionFast" (click)="navigateToTx(tx.tx_hash)">
+                <div class="cardContainer">
+                  <div class="cardElement el5"><span class="lighterText">Hash: </span><span class="hashWrap">{{ tx.tx_hash }}</span></div>
+                  @if (tx.payment_id8 == null || tx.payment_id8 == undefined || tx.payment_id8 == "") {
+                    <div class="cardElement el6"><span class="lighterText">Payment ID: </span><span class="missingText">?</span></div>
+                  } @else {
+                    <div class="cardElement el6"><span class="lighterText">Payment ID: </span>{{ tx.payment_id8 }}</div>
+                  }
+                  <div class="cardElement el7">{{ (tx.tx_size/1000).toFixed(3) }} <span class="lighterText">kB</span></div>
+                </div>
+              </div>
+            }
+            @empty {
+              <div class="card emptyCard mempoolCard font100 transitionFast">
+                <div class="row emptyRow">
+                  <div><span class="lighterText">The Mempool is currently empty</span></div>
+                </div>
+              </div>
+            }
+          } @else {
+            @for (item of getItemsArray(10); track item) {
+              <div class="card mempoolCard skeletonCard transition">
+                <div id="skeleton2.{{ 2*item }}" class="row skeleton skeletonRow hidden skeletonRowShort transition"></div>
+                <div id="skeleton2.{{ 2*item+1 }}" class="row skeleton skeletonRow hidden transition"></div>
+              </div>
+            }
+          }
+        </div>
+      </div>
+    </div>
+
+    <div class="card blockCard blockCard-promo blockCard-promo-ml">
+      <h2 class="heading font200 align-left">Current Monero (XMR) Price</h2>
+      <p class="align-left">Tracking the current price of Monero is straightforward thanks to a variety of online tools and exchanges that provide real-time updates.</p>
+      <p class="align-left">Where to check the live XMR price:</p>
+      <ul class="blockCard-promo--list">
+        <li>- CoinGecko:<br>
+          One of the most trusted platforms, CoinGecko offers real-time Monero price updates, trading volumes, market caps, and price charts.</li>
+        <li>- CoinMarketCap:<br>
+          Another popular site for tracking Monero’s live price, historical data, and comparing XMR across different exchanges.</li>
+        <li>- Kraken / KuCoin:<br>
+          Major exchanges not only allow you to trade Monero but also display real-time order book data, helping you understand current demand and supply.</li>
+        <li>- TradingView:<br>
+          For more technical users, TradingView offers detailed XMR/USD charts, complete with technical indicators like RSI, MACD, and moving averages.</li>
+      </ul>
+      <p class="align-left">Important tips when tracking the price:</p>
+      <ul class="blockCard-promo--list">
+        <li>1. Prices can vary slightly across different exchanges.</li>
+        <li>2. Always check for the spread between buy and sell prices.</li>
+        <li>3. Monitor volume levels to assess liquidity and market sentiment.</li>
+      </ul>
+      <p class="align-left">Note: Since Monero is often used in private transactions outside of exchanges, some market activity may not be fully visible.</p>
+    </div>
+
+    <div class="card blockCard blockCard-promo blockCard-promo-ml">
+      <h2 class="heading font200 align-left">Historical Monero Price Trends</h2>
+      <p class="align-left">Understanding Monero’s past price movements can offer valuable insights into potential future patterns.</p>
+      <p class="align-left">Major milestones in Monero’s price history:</p>
+      <ul class="blockCard-promo--list">
+        <li>2014:<br>
+          Monero launched with minimal value, mainly traded within a niche privacy-focused community.</li>
+        <li>2017 Bull Run:<br>
+          Like many other cryptocurrencies, Monero saw explosive growth, peaking over $450 during the crypto boom of late 2017.</li>
+        <li>Bear Markets:<br>
+          Monero, like the broader market, experienced corrections, often dropping by 70–90% from its peaks during bearish periods.</li>
+        <li>2020–2022:<br>
+          Renewed interest in privacy coins and concerns over financial surveillance have helped stabilize Monero around the $100–$300 range, depending on market conditions.</li>
+      </ul>
+      <p class="align-left">Analyzing historical data:</p>
+      <ul class="blockCard-promo--list">
+        <li>Study Monero’s behavior during Bitcoin rallies and crashes.</li>
+        <li>Note regulatory events that caused volatility (e.g., exchange delistings, government bans on privacy coins).</li>
+        <li>Watch for periods of low correlation with Bitcoin, which may indicate independent market interest.</li>
+        <li>External tools like CoinGecko’s historical charts or TradingView’s XMR price history provide detailed records to analyze trends.</li>
+      </ul>
+    </div>
+
+    <div class="card blockCard blockCard-promo blockCard-promo-ml">
+      <h2 class="heading font200 align-left">Factors Influencing XMR Price</h2>
+      <p class="align-left">Several unique factors influence the price of Monero, beyond the usual cryptocurrency market dynamics.</p>
+      <p class="align-left">Key influences include:</p>
+      <ul class="blockCard-promo--list">
+        <li>- Privacy Demand:<br>
+          As awareness of online privacy grows, demand for Monero tends to increase, pushing up the price.</li>
+        <li>- Exchange Listings/Delistings:<br>
+          Regulatory pressure can cause centralized exchanges to delist Monero, impacting liquidity and temporarily affecting its market value.</li>
+        <li>- Regulatory Environment:<br>
+          News about privacy coin regulations, especially in major markets like the US, EU, and Asia, can cause rapid price swings.</li>
+        <li>- Bitcoin Movements:<br>
+          Since most cryptocurrencies correlate with Bitcoin’s price movements, Bitcoin bull runs or crashes often affect XMR as well.</li>
+        <li>- Adoption Trends:<br>
+          Increased use of Monero for legitimate privacy use cases (e.g., humanitarian donations) can slowly drive organic demand.</li>
+      </ul>
+    </div>
+
+    <section class="card blockCard blockCard-faq">
+      <h3 class="heading font200 align-left">FAQs about Monero Price Tracking</h3>
+      <div class="section-question">
+        <p class="align-left"><b>Is Monero’s price highly volatile?</b></p>
+        <p class="align-left">Yes, like most cryptocurrencies, Monero’s price experiences significant fluctuations. Its emphasis on privacy can sometimes result in sharper reactions to regulatory news compared to more transparent coins like Bitcoin.</p>
+      </div>
+      <div class="section-question">
+        <p class="align-left"><b>Where is Monero’s price sourced from?</b></p>
+        <p class="align-left">Monero’s price is aggregated from a wide range of cryptocurrency exchanges worldwide. Tools like CoinGecko, CoinMarketCap, and TradingView collect and average prices from dozens of markets to provide accurate data.</p>
+      </div>
+    </section>
+</div>

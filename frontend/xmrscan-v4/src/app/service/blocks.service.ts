@@ -5,7 +5,8 @@ import { Blocks } from '../data/blocks';
 import { Block } from '../data/block';
 import { Mempool } from '../data/mempool';
 
-const baseUrl = 'https://xmrscan-docker-4ogsjv4w2q-ez.a.run.app'
+// for local replace to '/site-api'
+const baseUrl = 'https://moneroexplorer.org/site-api'
 
 @Injectable({
     providedIn: 'root'

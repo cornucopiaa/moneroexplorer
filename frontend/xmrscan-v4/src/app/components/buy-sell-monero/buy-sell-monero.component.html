@@ -1,0 +1,125 @@
+<div id="frame">
+    <div class="card blockCard blockCard-promo">
+      <h1 class="heading font200 align-left">Buying and Selling Monero (XMR): A Complete Guide</h1>
+      <p class="align-left">Monero (XMR) is one of the most popular cryptocurrencies for those who prioritize privacy. Unlike Bitcoin or Ethereum, Monero transactions are untraceable, making it ideal for individuals who value financial confidentiality. Whether you're new to crypto or a seasoned investor, this tutorial will teach you how to buy and sell Monero safely, using methods that fit your needs—whether you prefer high convenience or maximum anonymity.</p>
+    </div>
+    <div class="frame-wrapper">
+      <div class="part transition hidden" id="part1">
+        <div class="headingContainer">
+          <div class="heading font200">Latest Blocks:</div>
+          <div class="viewAllButton font200 transitionFaster" (click)="navigateToBlocks()">View All</div>
+        </div>
+        <div class="content">
+          @if (!loading) {
+            @for (block of home.blocks; track block) {
+              <div class="card blockCard font100 transitionFast" (click)="navigateToBlock(block.data!.block_height)">
+                <div class="cardContainer">
+                  <div class="cardElement el1"><span class="lighterText">Height: </span>{{ block.data!.block_height }}</div>
+                  <div class="cardElement el2"><span class="lighterText">Hash: </span><span class="hashWrap">{{ block.data!.hash }}</span></div>
+                  <div class="cardElement el3">{{ block.data!.txs.length }}
+                    @if (block.data!.txs.length == 1) {
+                      <span class="lighterText">Tx</span>
+                    } @else {
+                      <span class="lighterText">Txs</span>
+                    }
+                  </div>
+                  <div class="cardElement el4 age lighterText">{{ block.data!.relative_time }}</div>
+                </div>
+              </div>
+            }
+          } @else {
+            @for (item of getItemsArray(10); track item) {
+              <div class="card blockCard skeletonCard transition">
+                <div id="skeleton{{ 2*item }}" class="row skeleton skeletonRow hidden skeletonRowShort transition"></div>
+                <div id="skeleton{{ 2*item+1 }}" class="row skeleton skeletonRow hidden transition"></div>
+              </div>
+            }
+          }
+        </div>
+      </div>
+      <div class="part transition hidden" id="part2">
+        <div class="headingContainer">
+          <div class="heading font200">Mempool:</div>
+          <div class="viewAllButton font200 transitionFaster" (click)="navigateToMempool()">View All</div>
+        </div>
+        <div class="content">
+          @if (!loading) {
+            @for (tx of home.txs; track tx) {
+              <div class="card mempoolCard font100 transitionFast" (click)="navigateToTx(tx.tx_hash)">
+                <div class="cardContainer">
+                  <div class="cardElement el5"><span class="lighterText">Hash: </span><span class="hashWrap">{{ tx.tx_hash }}</span></div>
+                  @if (tx.payment_id8 == null || tx.payment_id8 == undefined || tx.payment_id8 == "") {
+                    <div class="cardElement el6"><span class="lighterText">Payment ID: </span><span class="missingText">?</span></div>
+                  } @else {
+                    <div class="cardElement el6"><span class="lighterText">Payment ID: </span>{{ tx.payment_id8 }}</div>
+                  }
+                  <div class="cardElement el7">{{ (tx.tx_size/1000).toFixed(3) }} <span class="lighterText">kB</span></div>
+                </div>
+              </div>
+            }
+            @empty {
+              <div class="card emptyCard mempoolCard font100 transitionFast">
+                <div class="row emptyRow">
+                  <div><span class="lighterText">The Mempool is currently empty</span></div>
+                </div>
+              </div>
+            }
+          } @else {
+            @for (item of getItemsArray(10); track item) {
+              <div class="card mempoolCard skeletonCard transition">
+                <div id="skeleton2.{{ 2*item }}" class="row skeleton skeletonRow hidden skeletonRowShort transition"></div>
+                <div id="skeleton2.{{ 2*item+1 }}" class="row skeleton skeletonRow hidden transition"></div>
+              </div>
+            }
+          }
+        </div>
+      </div>
+    </div>
+
+    <div class="card blockCard blockCard-promo blockCard-promo-ml">
+      <h2 class="heading font200 align-left">Where to Buy Monero (XMR)</h2>
+      <p class="align-left">Choosing the right platform is crucial when purchasing Monero. While not every exchange supports XMR due to regulatory concerns, there are still many reputable options available.</p>
+      <p class="align-left">Main ways to buy Monero:</p>
+      <ul class="blockCard-promo--list">
+        <li>- Centralized Exchanges:<br/>Platforms like Kraken, KuCoin, and HTX allow you to buy Monero with fiat currencies (USD, EUR) or crypto (BTC, USDT). Centralized exchanges are user-friendly and usually offer high liquidity, but they typically require identity verification (KYC).</li>
+        <li>- Peer-to-Peer (P2P) Platforms:<br/>Services like Bisq enable users to buy Monero directly from others without intermediaries. P2P trading offers better privacy and often accepts multiple payment methods like bank transfers, PayPal, or even gift cards.</li>
+        <li>- Monero ATMs:<br/>Though extremely rare, there are cryptocurrency ATMs out there supporting Monero. You can buy XMR using cash, though fees may be higher. Always check ATM maps like CoinATMRadar to locate a Monero-compatible ATM near you.</li>
+      </ul>
+    </div>
+
+    <div class="card blockCard blockCard-promo blockCard-promo-ml">
+      <h2 class="heading font200 align-left">Anonymous Monero Purchase Methods</h2>
+      <p class="align-left">Privacy-conscious users might want to avoid platforms that require KYC (Know Your Customer) verification. Fortunately, there are ways to acquire Monero anonymously.</p>
+      <p class="align-left">Best anonymous buying methods:</p>
+      <ul class="blockCard-promo--list">
+        <li>- Cash Transactions via P2P:<br/>Platforms like Bisq let you meet sellers in person and exchange cash for Monero, preserving complete anonymity.</li>
+        <li>- Crypto Swaps Without KYC:<br/>Services like Haveno (decentralized Monero exchange) or swap services like ChangeNOW and SimpleSwap allow you to trade other cryptocurrencies (like Bitcoin) for XMR without providing identity documents.</li>
+        <li>- Monero-Friendly ATMs:<br/>Some cryptocurrency ATMs do not require KYC for lower-value transactions (under $900, depending on jurisdiction). Always check the ATM's limits and rules.</li>
+        <li>- Mining Monero:<br/>Technically, mining XMR is another way to "acquire" Monero anonymously without purchasing it at all. But whenever you need to cash it out, you will have to use one of the methods listed above.</li>
+      </ul>
+    </div>
+
+    <div class="card blockCard blockCard-promo blockCard-promo-ml">
+      <h2 class="heading font200 align-left">Selling Monero Securely</h2>
+      <p class="align-left">Once you own Monero, you might eventually want to convert it back into fiat currency or other cryptocurrencies. Selling Monero securely while maintaining your privacy involves strategic choices.</p>
+      <p class="align-left">Ways to sell Monero:</p>
+      <ul class="blockCard-promo--list">
+        <li>- Through Centralized Exchanges:<br/>Sell your XMR for BTC or fiat currencies on platforms like Kraken or KuCoin. Remember, KYC requirements usually apply, and your identity will be tied to your transactions.</li>
+        <li>- Peer-to-Peer Selling:<br/>On platforms like LocalMonero, you can sell Monero directly to buyers, often receiving payment in cash, bank transfers, or alternative methods without KYC.</li>
+        <li>- Crypto-to-Crypto Swaps:<br/>If you want to swap XMR for Bitcoin or stablecoins without revealing your identity, use decentralized exchanges (DEXs) or swap services that don’t require user accounts.</li>
+        <li>- Gift Card Exchanges:<br/>Some P2P platforms allow you to sell Monero for gift cards, which you can later use or resell for fiat. This method is less direct but offers additional privacy.</li>
+      </ul>
+    </div>
+
+    <section class="card blockCard blockCard-faq">
+      <h3 class="heading font200 align-left">FAQs about Buying and Selling Monero</h3>
+      <div class="section-question">
+        <p class="align-left"><b>Is it legal to buy Monero?</b></p>
+        <p class="align-left">Yes, buying Monero is legal in most countries, although a few jurisdictions impose restrictions or discourage the use of privacy coins. Always check your local laws before purchasing.</p>
+      </div>
+      <div class="section-question">
+        <p class="align-left"><b>How to sell Monero anonymously?</b></p>
+        <p class="align-left">The best ways to sell Monero anonymously include using peer-to-peer platforms like LocalMonero, exchanging via crypto swap services that don’t require KYC, or converting XMR into other privacy coins through decentralized exchanges.</p>
+      </div>
+    </section>
+</div>

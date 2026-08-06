@@ -316,19 +316,22 @@ textarea {
 
 .card2 {
     width: 100%;
-    height: calc(135px*var(--factor));
+    min-height: calc(135px*var(--factor));
+    height: fit-content;
     border-radius: calc(39px*var(--factor));
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: center;
     align-items: center;
+    gap: calc(12px*var(--factor));
+    padding: calc(20px*var(--factor));
     font-size: calc(22px*var(--factor));
     color: var(--text);
     box-shadow: var(--boxShadow) 0px 1px 4px;
 }
 
 .card2.proven {
-    box-shadow: 0px 0px 0px 3px var(--proveBorder) inset; 
+    box-shadow: 0px 0px 0px 3px var(--proveBorder) inset;
     background-color: var(--proveBackground);
     color: var(--proveText);
 }
@@ -414,7 +417,13 @@ textarea {
 .copyRow {
     display: flex;
     align-items: center;
-    gap: 5px
+    gap: 5px;
+    flex-wrap: wrap;
+}
+
+.hashWrap {
+    word-break: break-all;
+    overflow-wrap: break-word;
 }
 
 .copyIcon {
@@ -445,8 +454,13 @@ textarea {
 
 @media only screen and (max-width: 760px) {
     #frame {
-        display: flex;
-        align-items: center;
+        //display: flex;
+        //align-items: center;
+    }
+
+    .frame-wrapper {
+      display: flex;
+      align-items: center;
     }
 
     .heading {
@@ -572,11 +586,13 @@ textarea {
 
     .card2 {
         font-size: 20px;
-        height: 120px;
+        min-height: 120px;
+        padding: 20px;
     }
 
     .singleRow2 {
-        width: 400px;
+        width: 100%;
+        max-width: 400px;
         height: fit-content;
     }
 
@@ -671,11 +687,13 @@ textarea {
     }
 
     .singleRow2 {
-        width: 320px;
+        width: 100%;
+        max-width: 320px;
     }
 
     .card2 {
         font-size: 17px;
+        padding: 20px;
     }
 
     .skeletonRow {

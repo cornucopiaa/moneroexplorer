@@ -1,5 +1,41 @@
-<header id="header" class="transition">
-    <div id="headerContainer" class="transition">
+<div class="header-top container">
+  <a class="header-top__logo-wrapper" href="/">
+    <img src="/assets/icons/icon-monero-logo-root.svg" width="32" height="32" alt="Monero Logo" />
+    <img src="/assets/icons/icon-monero-title.svg" width="120" height="32" alt="Monero" />
+    <span class="header-top__logo-text">Explorer</span>
+  </a>
+  <div class="header-top__links">
+    <a href="https://btcscan.org/" target="_blank" rel="external" class="header-top__icon-link">
+      <img src="/assets/icons/icon-btc.svg" width="32" height="32" alt="BTC Explorer" />
+    </a>
+    <a href="https://ethscan.org/" target="_blank" rel="external" class="header-top__icon-link">
+      <img src="/assets/icons/icon-eth.svg" width="32" height="32" alt="ETH Explorer" />
+    </a>
+    <a href="https://xmrscan.org/" target="_blank" rel="external" class="header-top__icon-link">
+      <img src="/assets/icons/icon-monero-logo.svg" width="32" height="32" alt="XMR Explorer" />
+    </a>
+    <a href="https://btcmempool.org/" target="_blank" rel="external" class="header-top__icon-link">
+      <img src="/assets/icons/icon-mempool-logo.png" width="32" height="32" alt="BTC Mempool" />
+    </a>
+    <button mat-button [matMenuTriggerFor]="explorersMenu" class="explorers-menu-trigger">
+      <span class="material-symbols-rounded explorers-icon">menu</span>
+    </button>
+    <mat-menu #explorersMenu="matMenu" class="explorers-dropdown">
+      <div class="explorers-dropdown__header">Explorers</div>
+      <a *ngFor="let explorer of explorers"
+         mat-menu-item
+         [href]="explorer.url"
+         target="_blank"
+         rel="external"
+         class="explorers-dropdown__item">
+        <img [src]="explorer.iconPath" width="24" height="24" [alt]="explorer.name" />
+        <span>{{ explorer.name }}</span>
+      </a>
+    </mat-menu>
+  </div>
+</div>
+<header id="header">
+    <div id="headerContainer">
         <div class="search-wrapper">
             <input type="text" id="headerSearchBar" #headerSearchBar class="font100 transition" placeholder="Search for a Block or Transaction" [(ngModel)]="searchInput" (keydown)="search($event)">
             <span class="material-symbols-rounded search-icon transitionFast" id="clearSearch" [class.hidden]="!searchInput || searchInput.trim() === ''" (click)="clearSearch()">backspace</span>

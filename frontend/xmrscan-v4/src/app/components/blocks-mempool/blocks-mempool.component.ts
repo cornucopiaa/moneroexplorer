@@ -6,6 +6,7 @@ import { Blocks } from '../../data/blocks';
 import { Mempool } from '../../data/mempool';
 import {MatPaginatorModule, PageEvent} from '@angular/material/paginator';
 import {MatSnackBar, MatSnackBarModule} from '@angular/material/snack-bar';
+import {Meta} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-blocks-mempool',
@@ -19,7 +20,7 @@ export class BlocksMempoolComponent implements AfterViewInit, OnInit {
   currentPage = 0;
   totalPages = 0;
   pageSize = 25;
-  
+
   isMobile: boolean = false;
   loading = true;
   blocks: Blocks = {
@@ -32,7 +33,7 @@ export class BlocksMempoolComponent implements AfterViewInit, OnInit {
   @Input()
   mode!: number;
 
-  constructor(private router: Router, private route: ActivatedRoute, private service : BlocksService, private _snackBar: MatSnackBar) {
+  constructor(private router: Router, private route: ActivatedRoute, private service : BlocksService, private _snackBar: MatSnackBar, private metaService: Meta) {
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;
     this.router.events
     .pipe(filter((rs): rs is NavigationEnd => rs instanceof NavigationEnd))
@@ -46,7 +47,7 @@ export class BlocksMempoolComponent implements AfterViewInit, OnInit {
     })
   }
 
-  ngAfterViewInit(): void {    
+  ngAfterViewInit(): void {
     this.transitionIn();
   }
 
@@ -100,8 +101,8 @@ export class BlocksMempoolComponent implements AfterViewInit, OnInit {
     }
   }
 
-  revealBadges() {    
-    for (let i = 0; i < 50; i++) {      
+  revealBadges() {
+    for (let i = 0; i < 50; i++) {
       setTimeout(() => document.getElementById('newBadge' + i)?.classList.remove('unrevealed'), 25*i);
     }
   }
@@ -178,8 +179,16 @@ export class BlocksMempoolComponent implements AfterViewInit, OnInit {
       this.mode = data['mode'];
       if (this.mode === 0) {
         this.loadBlocks();
+        const description = `Explore the latest blocks added to the Monero (XMR) blockchain. View block heights, timestamps, transaction counts, and mining rewards in real time.`
+        this.metaService.updateTag({ name: 'description', content: description});
+        this.metaService.updateTag({ name: 'twitter:description', content: description});
+        this.metaService.updateTag({ property: 'og:description', content: description});
       } else {
         this.loadMempool();
+        const description = `Monitor the Monero (XMR) mempool. Track pending transactions, sizes, fees, and confirmation times in real time.`
+        this.metaService.updateTag({ name: 'description', content: description});
+        this.metaService.updateTag({ name: 'twitter:description', content: description});
+        this.metaService.updateTag({ property: 'og:description', content: description});
       }
     });
     this.checkScreenWidth();

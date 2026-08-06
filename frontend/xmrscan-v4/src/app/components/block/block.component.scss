@@ -29,10 +29,16 @@
 }
 
 .copyRow {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 5px
+    display: block;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    word-break: break-all;
+}
+
+.copyRow span.material-symbols-rounded {
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 5px;
 }
 
 #copyIcon {
@@ -110,7 +116,8 @@
 .blockCard {
     position: relative;
     width: 100%;
-    height: calc(80px*var(--factor));
+    min-height: calc(80px*var(--factor));
+    height: fit-content;
     border-radius: calc(32px*var(--factor));
     display: flex;
     justify-content: center;
@@ -143,15 +150,24 @@
 }
 
 .blockCardContainer {
-    display: flex;
-    width: calc(970px*var(--factor));
+    display: grid;
+    grid-template-columns: auto 1fr auto auto;
+    grid-template-rows: auto;
+    column-gap: calc(20px*var(--factor));
+    row-gap: calc(10px*var(--factor));
+    width: calc(960px*var(--factor));
     height: fit-content;
-    justify-content: space-between;
+    padding: calc(20px*var(--factor));
 }
 
 .blockCardElement {
     color: var(--text);
     font-size: calc(22px*var(--factor));
+}
+
+.hashWrap {
+    word-break: break-all;
+    overflow-wrap: break-word;
 }
 
 .skeletonBlockInfo {
@@ -229,24 +245,30 @@
 }
 
 .el5 {
-    width: calc(440px*var(--factor));
+    grid-column: 1 / -1;
+    min-width: 0;
 }
 
 .el6 {
-    width: calc(450px*var(--factor));
+    width: auto;
+    white-space: nowrap;
 }
 
 .el7 {
-    width: calc(200px*var(--factor));
-    display: flex;
-    justify-content: flex-end;
+    width: auto;
+    white-space: nowrap;
 }
 
 @media only screen and (max-width: 760px) {
 
     #frame {
-        display: flex;
-        align-items: center;
+        //display: flex;
+        //align-items: center;
+    }
+
+    .frame-wrapper {
+      display: flex;
+      align-items: center;
     }
 
     .heading {
@@ -296,11 +318,11 @@
     }
 
     .blockCardContainer {
-        width: 400px;
+        display: flex;
         flex-direction: column;
+        width: 100%;
+        padding: 20px 25px;
         row-gap: 12px;
-        padding-top: 15px;
-        padding-bottom: 15px;
     }
 
     .blockCardElement {
@@ -309,15 +331,18 @@
     }
 
     .el5 {
-        width: fit-content;
+        width: 100%;
+        max-width: 400px;
     }
-    
+
     .el6 {
-        width: fit-content;
+        width: 100%;
+        max-width: 400px;
     }
-    
+
     .el7 {
-        width: fit-content;
+        width: 100%;
+        max-width: 400px;
     }
 
     .skeletonCard {

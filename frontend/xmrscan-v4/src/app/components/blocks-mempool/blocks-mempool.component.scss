@@ -9,7 +9,8 @@
 .blockCard {
     position: relative;
     width: 100%;
-    height: calc(80px*var(--factor));
+    min-height: calc(80px*var(--factor));
+    height: fit-content;
     border-radius: calc(32px*var(--factor));
     display: flex;
     justify-content: center;
@@ -65,10 +66,14 @@
 }
 
 .blockCardContainer {
-    display: flex;
+    display: grid;
+    grid-template-columns: auto 1fr auto auto;
+    grid-template-rows: auto;
+    column-gap: calc(20px*var(--factor));
+    row-gap: calc(10px*var(--factor));
     width: calc(960px*var(--factor));
     height: fit-content;
-    justify-content: flex-start;
+    padding: calc(20px*var(--factor));
 }
 
 .blockCardElement {
@@ -76,38 +81,48 @@
     font-size: calc(22px*var(--factor));
 }
 
+.hashWrap {
+    word-break: break-all;
+    overflow-wrap: break-word;
+}
+
 .el1 {
-    width: calc(247px*var(--factor));
+    width: auto;
+    white-space: nowrap;
 }
 
 .el2 {
-    width: calc(378px*var(--factor));
+    grid-column: 1 / -1;
+    min-width: 0;
 }
 
 .el3 {
-    width: calc(168px*var(--factor));
+    width: auto;
+    white-space: nowrap;
 }
 
 .el4 {
-    width: calc(167px*var(--factor));
+    width: auto;
     display: flex;
     justify-content: flex-end;
     align-items: center;
     font-size: calc(20px*var(--factor));
+    white-space: nowrap;
 }
 
 .el5 {
-    width: calc(387px*var(--factor));
+    grid-column: 1 / -1;
+    min-width: 0;
 }
 
 .el6 {
-    width: calc(396px*var(--factor));
+    width: auto;
+    white-space: nowrap;
 }
 
 .el7 {
-    width: calc(177px*var(--factor));
-    display: flex;
-    justify-content: flex-end;
+    width: auto;
+    white-space: nowrap;
 }
 
 .skeletonBlockCardContainer {
@@ -176,8 +191,13 @@
 @media only screen and (max-width: 760px) {
 
     #frame {
-        display: flex;
-        align-items: center;
+        //display: flex;
+        //align-items: center;
+    }
+
+    .frame-wrapper {
+      display: flex;
+      align-items: center;
     }
 
     .heading {
@@ -205,11 +225,10 @@
     }
 
     .blockCardContainer {
-        padding-top: 15px;
-        padding-bottom: 15px;
-        padding-left: 25px;
+        display: flex;
+        flex-direction: column;
+        padding: 20px 25px;
         width: 100%;
-        flex-wrap: wrap;
         row-gap: 12px;
     }
 
@@ -218,11 +237,13 @@
     }
 
     .el1 {
-        min-width: 400px;
+        width: 100%;
+        max-width: 400px;
     }
-    
+
     .el2 {
-        min-width: 400px;
+        width: 100%;
+        max-width: 400px;
     }
 
     .txCountAgeMobile {
@@ -230,28 +251,29 @@
         display: flex;
         justify-content: space-between;
     }
-    
+
     .el3 {
         width: fit-content;
     }
-    
+
     .el4 {
         width: fit-content;
         font-size: 14px;
     }
 
     .el5 {
-        min-width: 400px;
+        width: 100%;
+        max-width: 400px;
     }
-    
+
     .el6 {
-        min-width: 400px;
+        width: 100%;
+        max-width: 400px;
     }
-    
+
     .el7 {
-        min-width: 400px;
-        display: flex;
-        justify-content: flex-start;
+        width: 100%;
+        max-width: 400px;
     }
 
     .newBadge {
@@ -272,7 +294,7 @@
         border-radius: 17px;
         margin-left: 25px;
         width: 375px;
-    }   
+    }
 }
 
 @media only screen and (max-width: 470px) {

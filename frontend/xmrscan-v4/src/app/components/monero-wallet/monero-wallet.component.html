@@ -1,0 +1,135 @@
+<div id="frame">
+    <div class="card blockCard blockCard-promo">
+      <h1 class="heading font200 align-left">Monero Wallet Comparison: Hardware, Mobile & Desktop Options</h1>
+      <p class="align-left">Securing your Monero (XMR) begins with choosing the right wallet. In this guide, we explore the best Monero wallets available—covering hardware, mobile, and desktop options—so you can find the one that best suits your needs.</p>
+    </div>
+    <div class="frame-wrapper">
+      <div class="part transition hidden" id="part1">
+        <div class="headingContainer">
+          <div class="heading font200">Latest Blocks:</div>
+          <div class="viewAllButton font200 transitionFaster" (click)="navigateToBlocks()">View All</div>
+        </div>
+        <div class="content">
+          @if (!loading) {
+            @for (block of home.blocks; track block) {
+              <div class="card blockCard font100 transitionFast" (click)="navigateToBlock(block.data!.block_height)">
+                <div class="cardContainer">
+                  <div class="cardElement el1"><span class="lighterText">Height: </span>{{ block.data!.block_height }}</div>
+                  <div class="cardElement el2"><span class="lighterText">Hash: </span><span class="hashWrap">{{ block.data!.hash }}</span></div>
+                  <div class="cardElement el3">{{ block.data!.txs.length }}
+                    @if (block.data!.txs.length == 1) {
+                      <span class="lighterText">Tx</span>
+                    } @else {
+                      <span class="lighterText">Txs</span>
+                    }
+                  </div>
+                  <div class="cardElement el4 age lighterText">{{ block.data!.relative_time }}</div>
+                </div>
+              </div>
+            }
+          } @else {
+            @for (item of getItemsArray(10); track item) {
+              <div class="card blockCard skeletonCard transition">
+                <div id="skeleton{{ 2*item }}" class="row skeleton skeletonRow hidden skeletonRowShort transition"></div>
+                <div id="skeleton{{ 2*item+1 }}" class="row skeleton skeletonRow hidden transition"></div>
+              </div>
+            }
+          }
+        </div>
+      </div>
+      <div class="part transition hidden" id="part2">
+        <div class="headingContainer">
+          <div class="heading font200">Mempool:</div>
+          <div class="viewAllButton font200 transitionFaster" (click)="navigateToMempool()">View All</div>
+        </div>
+        <div class="content">
+          @if (!loading) {
+            @for (tx of home.txs; track tx) {
+              <div class="card mempoolCard font100 transitionFast" (click)="navigateToTx(tx.tx_hash)">
+                <div class="cardContainer">
+                  <div class="cardElement el5"><span class="lighterText">Hash: </span><span class="hashWrap">{{ tx.tx_hash }}</span></div>
+                  @if (tx.payment_id8 == null || tx.payment_id8 == undefined || tx.payment_id8 == "") {
+                    <div class="cardElement el6"><span class="lighterText">Payment ID: </span><span class="missingText">?</span></div>
+                  } @else {
+                    <div class="cardElement el6"><span class="lighterText">Payment ID: </span>{{ tx.payment_id8 }}</div>
+                  }
+                  <div class="cardElement el7">{{ (tx.tx_size/1000).toFixed(3) }} <span class="lighterText">kB</span></div>
+                </div>
+              </div>
+            }
+            @empty {
+              <div class="card emptyCard mempoolCard font100 transitionFast">
+                <div class="row emptyRow">
+                  <div><span class="lighterText">The Mempool is currently empty</span></div>
+                </div>
+              </div>
+            }
+          } @else {
+            @for (item of getItemsArray(10); track item) {
+              <div class="card mempoolCard skeletonCard transition">
+                <div id="skeleton2.{{ 2*item }}" class="row skeleton skeletonRow hidden skeletonRowShort transition"></div>
+                <div id="skeleton2.{{ 2*item+1 }}" class="row skeleton skeletonRow hidden transition"></div>
+              </div>
+            }
+          }
+        </div>
+      </div>
+    </div>
+
+    <div class="card blockCard blockCard-promo blockCard-promo-ml">
+      <h2 class="heading font200 align-left">Leading Monero Hardware Wallets</h2>
+      <p class="align-left">Hardware wallets provide offline storage for Monero, making them one of the most secure methods of safeguarding your XMR. These physical devices keep private keys isolated from online threats. Popular hardware wallet options include:</p>
+      <ul class="blockCard-promo--list">
+        <li>- Ledger Nano X</li>
+        <li>- Ledger Nano S Plus</li>
+        <li>- Trezor Model T</li>
+      </ul>
+      <p class="align-left">To properly store Monero using a hardware wallet, you'll need more than just device support—you'll need compatibility with Monero-specific privacy features like ring signatures and stealth addresses. These features are often not fully supported by default hardware wallet apps, so pairing your device with dedicated Monero-compatible software like Feather Wallet or the Monero GUI Wallet is essential.</p>
+      <p class="align-left">To get started:</p>
+      <ol class="blockCard-promo--list">
+        <li>Install the Monero app via Ledger Live (for Ledger users) or update your Trezor firmware.</li>
+        <li>Launch Feather Wallet or Monero GUI and select “Use a hardware wallet.”</li>
+        <li>Connect your device via USB and follow the prompts to sync with a trusted Monero node.</li>
+        <li>Once setup is complete, you can safely receive, store, and send XMR using your hardware wallet.</li>
+      </ol>
+    </div>
+
+    <div class="card blockCard blockCard-promo blockCard-promo-ml">
+      <h2 class="heading font200 align-left">Best Monero Mobile Wallets</h2>
+      <p class="align-left">For users who prefer managing Monero on the go, mobile wallets offer a great mix of privacy and convenience. Two standout options include:</p>
+      <ul class="blockCard-promo--list">
+        <li>- Monerujo (Android) – A powerful app that supports multiple Monero wallets and features full integration of Monero’s privacy protocols.</li>
+        <li>- Cake Wallet (iOS & Android) – User-friendly with integrated exchange features, open-source code, and strong community support.</li>
+      </ul>
+      <p class="align-left">Both mobile wallets connect to remote Monero nodes, reducing synchronization times while still upholding the protocol’s privacy principles.</p>
+    </div>
+
+    <div class="card blockCard blockCard-promo blockCard-promo-ml">
+      <h2 class="heading font200 align-left">Top Desktop Wallets for Monero</h2>
+      <p class="align-left">If you manage Monero regularly on your computer, desktop wallets provide excellent control and security. Two highly recommended options are:</p>
+      <ul class="blockCard-promo--list">
+        <li>- Monero GUI Wallet – The official desktop wallet built by the Monero Project. It’s full-featured, supports running a full node, and is perfect for advanced users who want maximum privacy and autonomy.</li>
+        <li>- Feather Wallet – A lightweight and user-friendly alternative. It supports hardware wallet integration, remote nodes, and multisig functionality, making it ideal for users who want speed without sacrificing key features.</li>
+      </ul>
+    </div>
+
+    <section class="card blockCard blockCard-faq">
+      <h3 class="heading font200 align-left">FAQs about Monero Wallet Tools</h3>
+      <div class="section-question">
+        <p class="align-left"><b>Are hardware wallets more secure than mobile wallets?</b></p>
+        <p class="align-left">Yes. Hardware wallets store your private keys offline, offering stronger protection against hacks.</p>
+      </div>
+      <div class="section-question">
+        <p class="align-left"><b>Can I use multiple Monero wallets at once?</b></p>
+        <p class="align-left">Absolutely. You can manage and operate several wallets across mobile, desktop, and hardware platforms.</p>
+      </div>
+      <div class="section-question">
+        <p class="align-left"><b>Can others see my Monero wallet balance?</b></p>
+        <p class="align-left">Only if you share your view key. Otherwise, balances remain private.</p>
+      </div>
+      <div class="section-question">
+        <p class="align-left"><b>Are Monero wallet lookups traceable?</b></p>
+        <p class="align-left">No. Thanks to Monero’s privacy-by-default design, third parties cannot trace lookups or transactions.</p>
+      </div>
+    </section>
+</div>

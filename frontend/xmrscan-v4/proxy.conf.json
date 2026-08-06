@@ -1,0 +1,11 @@
+{
+  "/site-api": {
+    "target": "https://moneroexplorer.org",
+    "secure": true,
+    "changeOrigin": true,
+    "logLevel": "debug",
+    "pathRewrite": {
+      "^/site-api": "/site-api"
+    }
+  }
+}

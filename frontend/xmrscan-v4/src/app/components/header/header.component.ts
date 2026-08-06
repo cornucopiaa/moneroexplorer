@@ -3,17 +3,36 @@ import { FormsModule } from '@angular/forms';
 import { NavigationEnd, Router } from '@angular/router';
 import { SearchService } from '../../service/search.service';
 import { Search } from '../../data/search';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatButtonModule } from '@angular/material/button';
+import { CommonModule } from '@angular/common';
+
+interface Explorer {
+  name: string;
+  url: string;
+  iconPath: string;
+}
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule, MatMenuModule, MatButtonModule, CommonModule],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss'
 })
 export class HeaderComponent {
 
   @ViewChild('headerSearchBar') headerSearchBar!: ElementRef;
+
+  explorers: Explorer[] = [
+    { name: 'BTC Explorer', url: 'https://btcscan.org/', iconPath: '/assets/icons/icon-btc.svg' },
+    { name: 'ETH Explorer', url: 'https://ethscan.org/', iconPath: '/assets/icons/icon-eth.svg' },
+    { name: 'XMR Explorer', url: 'https://xmrscan.org/', iconPath: '/assets/icons/icon-monero-logo.svg' },
+    { name: 'Monero Explorer', url: 'https://moneroexplorer.org/#/', iconPath: '/assets/icons/icon-monero-logo-root.svg' },
+    { name: 'BTC Mempool', url: 'https://btcmempool.org/', iconPath: '/assets/icons/icon-mempool-logo.png' },
+    { name: 'BTC Fee', url: 'https://btcfee.org/', iconPath: '/assets/icons/icon-btc-fee.svg' },
+    { name: 'BTC Fees', url: 'https://btcfees.org/', iconPath: '/assets/icons/icon-btc-fees.svg' }
+  ];
 
   searchInput: string = '';
   searchResult: Search = {

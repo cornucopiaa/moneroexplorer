@@ -1,9 +1,11 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
+import {AfterViewInit, Component, Inject, OnInit, Renderer2} from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { Home } from '../../data/home';
 import { HomeService } from '../../service/home.service';
 import { filter } from 'rxjs/operators'
 import {MatSnackBar, MatSnackBarModule} from '@angular/material/snack-bar';
+import {Meta} from '@angular/platform-browser';
+import {DOCUMENT} from '@angular/common';
 
 @Component({
   selector: 'app-home',
@@ -20,7 +22,14 @@ export class HomeComponent implements AfterViewInit, OnInit{
     txs: []
   }
 
-  constructor(private router: Router, private service: HomeService, private _snackBar: MatSnackBar) {
+  constructor(
+    private router: Router,
+    private service: HomeService,
+    private _snackBar: MatSnackBar,
+    private metaService: Meta,
+    private renderer: Renderer2,
+    @Inject(DOCUMENT) private document: Document
+  ) {
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;
     this.router.events
     .pipe(filter((rs): rs is NavigationEnd => rs instanceof NavigationEnd))
@@ -116,6 +125,45 @@ export class HomeComponent implements AfterViewInit, OnInit{
 
   ngOnInit(): void {
     this.loadHome();
+
+    const description = 'Access MoneroExplorer to search XMR transactions, blocks, and real-time Monero blockchain data securely and anonymously.'
+    this.metaService.updateTag({ name: 'description', content: description});
+    this.metaService.updateTag({ name: 'twitter:description', content: description});
+    this.metaService.updateTag({ property: 'og:description', content: description});
+
+    const script = this.renderer.createElement('script');
+    script.type = 'application/ld+json';
+    script.text = JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Can I find out who owns a Monero address?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No, Monero’s privacy-focused design prevents direct identification of address ownership."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How often is blockchain data updated?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Blockchain data is updated in real-time as new blocks are confirmed."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is Monero’s price highly volatile?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, like other cryptocurrencies, Monero (XMR) experiences significant price fluctuations."
+          }
+        }
+      ]
+    });
+    this.renderer.appendChild(this.document.head, script);
   }
 }
 

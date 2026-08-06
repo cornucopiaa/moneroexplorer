@@ -4,7 +4,7 @@ import { filter } from 'rxjs/operators'
 import { ProveResults, Transaction } from '../../data/transaction';
 import { TransactionService } from '../../service/transaction.service';
 import { FormsModule } from '@angular/forms';
-import { Title } from '@angular/platform-browser';
+import { Title, Meta } from '@angular/platform-browser';
 import {MatSnackBar, MatSnackBarModule} from '@angular/material/snack-bar';
 
 @Component({
@@ -34,7 +34,7 @@ export class TransactionComponent {
   address: string = '';
   key: string = '';
 
-  constructor(private router: Router, private route: ActivatedRoute, private service: TransactionService, private titleService: Title, private _snackBar: MatSnackBar) {
+  constructor(private router: Router, private route: ActivatedRoute, private service: TransactionService, private titleService: Title, private _snackBar: MatSnackBar, private metaService: Meta) {
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;
     this.router.events
     .pipe(filter((rs): rs is NavigationEnd => rs instanceof NavigationEnd))
@@ -48,7 +48,7 @@ export class TransactionComponent {
     })
   }
 
-  ngAfterViewInit(): void {    
+  ngAfterViewInit(): void {
     this.transitionIn();
   }
 
@@ -96,7 +96,9 @@ export class TransactionComponent {
     setTimeout(() => this.router.navigate(['/blocks']), 10);
   }
 
-  navigateToBlock(height: number) {
+  navigateToBlock(height: number | undefined) {
+    if (height === undefined) return
+
     this.transitionOut();
     setTimeout(() => this.router.navigate(['/block/' + height]), 10);
   }
@@ -159,7 +161,7 @@ export class TransactionComponent {
       if (this.address.length != 95 || (!this.address.startsWith('4') && !this.address.startsWith('8'))) {
         this.displayError('address');
         return;
-      } 
+      }
       if (!/^[0-9a-fA-F]+$/.test(this.key)) {
         this.displayError('key');
         return;
@@ -185,7 +187,7 @@ export class TransactionComponent {
       if (this.address.length != 95 || (!this.address.startsWith('4') && !this.address.startsWith('8'))) {
         this.displayError('address');
         return;
-      } 
+      }
       if (!/^[0-9a-fA-F]+$/.test(this.key)) {
         this.displayError('key');
         return;
@@ -285,7 +287,12 @@ export class TransactionComponent {
       this.tx = JSON.parse(sessionStorage.getItem(this.txHash)!);
       this.loading = false
     }
-    this.titleService.setTitle('Tx #' + this.txHash + ' · xmrscan.com');
+    this.titleService.setTitle(`Monero Transaction Overview – ${this.txHash} | MoneroExplorer`);
+
+    const description = `Detailed view of Monero transaction ${this.txHash}, including sender, recipient, transaction size, fee, number of confirmations, and status.`
+    this.metaService.updateTag({ name: 'description', content: description});
+    this.metaService.updateTag({ name: 'twitter:description', content: description});
+    this.metaService.updateTag({ property: 'og:description', content: description});
   }
 
   copy(text: string, event: Event) {
